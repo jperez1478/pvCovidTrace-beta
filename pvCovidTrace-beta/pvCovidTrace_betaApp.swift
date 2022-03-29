@@ -11,7 +11,7 @@ import SwiftUI
 struct pvCovidTrace_betaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppTabView()
         }
     }
 }

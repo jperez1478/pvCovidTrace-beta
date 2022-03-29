@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8EBF468027F175170077150D /* pvCovidTrace_betaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF467F27F175170077150D /* pvCovidTrace_betaApp.swift */; };
-		8EBF468227F175170077150D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF468127F175170077150D /* ContentView.swift */; };
 		8EBF468427F175180077150D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF468327F175180077150D /* Assets.xcassets */; };
 		8EBF468727F175180077150D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF468627F175180077150D /* Preview Assets.xcassets */; };
 		8EBF469027F1753F0077150D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBF468F27F1753F0077150D /* CloudKit.framework */; };
@@ -24,7 +23,6 @@
 /* Begin PBXFileReference section */
 		8EBF467C27F175170077150D /* pvCovidTrace-beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pvCovidTrace-beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EBF467F27F175170077150D /* pvCovidTrace_betaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pvCovidTrace_betaApp.swift; sourceTree = "<group>"; };
-		8EBF468127F175170077150D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8EBF468327F175180077150D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EBF468627F175180077150D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8EBF468D27F175370077150D /* pvCovidTrace-beta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "pvCovidTrace-beta.entitlements"; sourceTree = "<group>"; };
@@ -72,7 +70,6 @@
 			children = (
 				8EBF468D27F175370077150D /* pvCovidTrace-beta.entitlements */,
 				8EBF467F27F175170077150D /* pvCovidTrace_betaApp.swift */,
-				8EBF468127F175170077150D /* ContentView.swift */,
 				8EBF468327F175180077150D /* Assets.xcassets */,
 				8EBF468527F175180077150D /* Preview Content */,
 			);
@@ -172,7 +169,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EBF468227F175170077150D /* ContentView.swift in Sources */,
 				8EBF469C27F2DFB40077150D /* PVNewsView.swift in Sources */,
 				8EBF469E27F2F5310077150D /* LocationDetailView.swift in Sources */,
 				8EBF468027F175170077150D /* pvCovidTrace_betaApp.swift in Sources */,
