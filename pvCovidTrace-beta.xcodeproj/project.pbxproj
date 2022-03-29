@@ -18,6 +18,7 @@
 		8EBF469827F2DF2F0077150D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF469727F2DF2F0077150D /* ProfileView.swift */; };
 		8EBF469A27F2DF510077150D /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF469927F2DF510077150D /* LocationListView.swift */; };
 		8EBF469C27F2DFB40077150D /* PVNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF469B27F2DFB40077150D /* PVNewsView.swift */; };
+		8EBF469E27F2F5310077150D /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF469D27F2F5310077150D /* LocationDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		8EBF469727F2DF2F0077150D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8EBF469927F2DF510077150D /* LocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
 		8EBF469B27F2DFB40077150D /* PVNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVNewsView.swift; sourceTree = "<group>"; };
+		8EBF469D27F2F5310077150D /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				8EBF469B27F2DFB40077150D /* PVNewsView.swift */,
 				8EBF469727F2DF2F0077150D /* ProfileView.swift */,
 				8EBF469927F2DF510077150D /* LocationListView.swift */,
+				8EBF469D27F2F5310077150D /* LocationDetailView.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			files = (
 				8EBF468227F175170077150D /* ContentView.swift in Sources */,
 				8EBF469C27F2DFB40077150D /* PVNewsView.swift in Sources */,
+				8EBF469E27F2F5310077150D /* LocationDetailView.swift in Sources */,
 				8EBF468027F175170077150D /* pvCovidTrace_betaApp.swift in Sources */,
 				8EBF469627F2DD8D0077150D /* LocationMapView.swift in Sources */,
 				8EBF469427F2DD4F0077150D /* AppTabView.swift in Sources */,
