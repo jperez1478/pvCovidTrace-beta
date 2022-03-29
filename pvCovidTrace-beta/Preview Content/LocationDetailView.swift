@@ -9,6 +9,11 @@ import SwiftUI
 
 struct LocationDetailView: View {
     
+    let columns = [GridItem(.flexible()),
+                   GridItem(.flexible()),
+                   GridItem(.flexible())
+                  ]
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
@@ -27,8 +32,8 @@ struct LocationDetailView: View {
                 .padding(.horizontal)
                 
               
-                
-                Text("This is a test description. This is a test description. This is a test description. This is a test description. This is a test description.")
+                //this can be fixed
+                Text("make pv safe , check in where you had been depeding on your status, report to offical school network by the network globe button")
                     .lineLimit(3)
                     .minimumScaleFactor(0.75)
                     .padding(.horizontal)
@@ -39,15 +44,45 @@ struct LocationDetailView: View {
                         .frame(height: 80)
                         .foregroundColor(Color(.secondarySystemBackground))
                 
-                    HStack {
+                    HStack(spacing: 70) {
                         Button {
                         } label: {
                     LocationActionButton(color: .brandPrimary, imageName: "location.fill")
+                        }
+                        Link(destination: URL(string: "https://pvamu.co1.qualtrics.com/jfe/form/SV_cFHoR4fAzZLER1A")!, label:  {
+                            
+                            Button {
+                            } label: {
+                        LocationActionButton(color: .brandPrimary, imageName: "network")
+                            }
+                        })
+                       
+                        
+                        Button {
+                        } label: {
+                    LocationActionButton(color: .brandPrimary, imageName: "person.fill.checkmark")
                         }
                     }
                 
                 }
                 .padding(.horizontal)
+                Text("Whos here?")
+                    .bold()
+                    .font(.title2)
+                
+                LazyVGrid(columns: columns, content: {
+                    AvatarView(size: 64)
+                    AvatarView(size: 64)
+                    AvatarView(size: 64)
+                    AvatarView(size: 64)
+                    AvatarView(size: 64)
+                    AvatarView(size: 64)
+                    AvatarView(size: 64)
+                    AvatarView(size: 64)
+                  
+                    
+                    
+                })
                 Spacer()
     }
         .navigationTitle("LocationName")
@@ -77,6 +112,7 @@ struct LocationActionButton: View {
                     
                     Image(systemName: imageName)
                         .resizable()
+                        .scaledToFit()
                         .frame(width: 22, height: 22)
                         .foregroundColor(.white)
 
@@ -85,3 +121,16 @@ struct LocationActionButton: View {
         }
     }
 
+
+struct AvatarView: View {
+    var size: CGFloat
+    
+    var body: some View {
+        Image("default-avatar")
+            .resizable()
+            .scaledToFit()
+            .frame(width: size, height: size)
+            .clipShape(Circle())
+        
+    }
+}
