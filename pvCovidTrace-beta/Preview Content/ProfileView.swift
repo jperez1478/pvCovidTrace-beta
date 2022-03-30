@@ -19,29 +19,18 @@ struct ProfileView: View {
     var body: some View {
         VStack {
             ZStack {
-                Color(.secondarySystemBackground)
-                    .frame(height: 130)
-                    .cornerRadius(12)
-                    .padding(.horizontal)
+                NameBackgroundView()
                 
                 HStack(spacing: 16) {
                     ZStack {
                         AvatarView(size: 84)
-                    
-                        Image(systemName: "square.and.pencil")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 14, height: 14)
-                            .foregroundColor(.white)
-                            .offset(y: 30)
+                        EditImage()
                     }
                     .padding(.leading, 12)
                     
                     VStack(spacing: 1) {
                         TextField("First Name", text: $firstName)
-                            .font(.system(size: 32, weight: .bold))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.75)
+                            .profileNameStyle()
                         
                         TextField("Last Name", text: $lastName)
                             .font(.system(size: 32, weight: .bold))
@@ -58,21 +47,7 @@ struct ProfileView: View {
             }
             
             VStack(alignment: .leading, spacing: 8){
-            Text("Report your Status:  ")
-                    .font(.callout)
-                    .foregroundColor(.secondary)
-                
-                +
-                
-                Text("\(20  - covidStatus.count)")
-                    .bold()
-                    .font(.callout)
-                    .foregroundColor(covidStatus.count <= 100 ? .brandPrimary : Color(.systemPink))
-                    
-                +
-                
-                Text(" Characthers Remain")
-                
+                CharactersRemainingView(currentCount:  covidStatus.count)
                 
                 TextEditor(text: $covidStatus)
                     .frame(width: 100, height: 50)
@@ -107,5 +82,44 @@ struct ProfileView_Previews: PreviewProvider {
         NavigationView {
             ProfileView()
         }
+    }
+}
+
+
+
+struct NameBackgroundView: View {
+    var body: some View {
+        Color(.secondarySystemBackground)
+            .frame(height: 130)
+            .cornerRadius(12)
+            .padding(.horizontal)
+    }
+}
+
+struct EditImage:View {
+    var body: some View {
+        Image(systemName: "square.and.pencil")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 14, height: 14)
+            .foregroundColor(.white)
+            .offset(y: 30)
+    }
+}
+
+struct CharactersRemainingView: View {
+    var currentCount: Int
+    var body: some View{
+        Text("\(20  -  currentCount)")
+            .bold()
+            .font(.callout)
+            .foregroundColor(currentCount  <= 100 ? .brandPrimary : Color(.systemPink))
+            
+        +
+        
+        Text(" Characthers Remain")
+            .font(.callout)
+            .foregroundColor(.secondary)
+
     }
 }

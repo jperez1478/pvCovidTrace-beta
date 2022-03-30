@@ -17,11 +17,7 @@ struct LocationMapView: View {
                 .ignoresSafeArea()
             
             VStack {
-                Image("pvmap")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 70)
-                .shadow(radius: 10)
+               LogoView().shadow(radius: 10)
             
                 Spacer()
             }
@@ -32,5 +28,15 @@ struct LocationMapView: View {
 struct LocationMapView_Previews: PreviewProvider {
     static var previews: some View {
         LocationMapView()
+    }
+}
+
+struct LogoView: View {
+    var body: some View {
+        Image("pvmap")
+            .resizable()
+            .scaledToFit()
+            .frame(height: 70)
+            
     }
 }

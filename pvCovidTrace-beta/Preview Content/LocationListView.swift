@@ -29,34 +29,4 @@ struct LocationListView_Previews: PreviewProvider {
     }
 }
 
-struct LocationCell: View {
-    
-    
-    var body: some View {
-        
-            HStack {
-                Image("library")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 80, height: 80)
-                    .clipShape(Rectangle())
-                    .padding(.vertical, 8)
-                
-                VStack(alignment: .leading) {
-                    Text("PVAMU Library")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .minimumScaleFactor(0.75)
-                    
-                    HStack {
-                        Text("Check in ")
-                            .minimumScaleFactor(0.75)
-                    }
-                }
-                
-                .padding(.leading)
-            }
-            
-        }
-    }
 

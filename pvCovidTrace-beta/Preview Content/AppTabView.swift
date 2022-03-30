@@ -12,20 +12,23 @@ struct AppTabView: View {
         TabView {
            LocationMapView()
                 .tabItem{
-                    Label("Campus Map", systemImage: "map")
+                    Label("Map", systemImage: "map")
                 }
             
-            PVNewsView()
-                .tabItem{
-                    Label("PVNews", systemImage: "newspaper")
-                }
-            ProfileView()
-                .tabItem{
-                    Label("Profile", systemImage: "person")
-                }
             LocationListView()
                 .tabItem{
                     Label("Check In", systemImage: "building")
+                }
+        
+            PVNewsView()
+                .tabItem{
+                    Label("News", systemImage: "newspaper")
+                }
+            NavigationView {
+                ProfileView()
+            }
+                .tabItem{
+                    Label("Profile", systemImage: "person")
                 }
             
         }
