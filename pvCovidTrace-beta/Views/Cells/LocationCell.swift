@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LocationCell: View {
-    var location: PVLocation
+    var location: PVLocations
     
     var body: some View {
         HStack {
@@ -40,6 +40,6 @@ struct LocationCell: View {
 
 struct LocationCell_Previews: PreviewProvider {
     static var previews: some View {
-        LocationCell(location: PVLocation(record: MockData.location))
+        LocationCell(location: PVLocations(record: MockData.location))
     }
 }

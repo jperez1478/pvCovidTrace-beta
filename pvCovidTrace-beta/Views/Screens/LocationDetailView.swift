@@ -14,7 +14,7 @@ struct LocationDetailView: View {
                    GridItem(.flexible())
     ]
     
-    var locations: PVLocation
+    var locations: PVLocations
     
     var body: some View {
         VStack(spacing: 16) {
@@ -92,7 +92,7 @@ struct LocationDetailView: View {
 struct LocationDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            LocationDetailView(locations: PVLocation(record: MockData.location))
+            LocationDetailView(locations: PVLocations(record: MockData.location))
         }
        
     }

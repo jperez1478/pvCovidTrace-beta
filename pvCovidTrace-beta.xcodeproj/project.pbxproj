@@ -12,7 +12,6 @@
 		8E14E59027F3A0A000774ABE /* Custommodifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E58F27F3A0A000774ABE /* Custommodifiers.swift */; };
 		8E14E59227F3A0D000774ABE /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E59127F3A0D000774ABE /* View+Ext.swift */; };
 		8E14E59727F43DA900774ABE /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E59627F43DA900774ABE /* SubmitButton.swift */; };
-		8E14E59C27F443BF00774ABE /* PVLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E59B27F443BF00774ABE /* PVLocation.swift */; };
 		8E14E59E27F44A2600774ABE /* PVProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E59D27F44A2600774ABE /* PVProfile.swift */; };
 		8E14E5A027F44BDD00774ABE /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E59F27F44BDD00774ABE /* MockData.swift */; };
 		8E14E5A327F450C800774ABE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E5A227F450C800774ABE /* CloudKitManager.swift */; };
@@ -28,6 +27,8 @@
 		8EBF469A27F2DF510077150D /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF469927F2DF510077150D /* LocationListView.swift */; };
 		8EBF469C27F2DFB40077150D /* PVNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF469B27F2DFB40077150D /* PVNewsView.swift */; };
 		8EBF469E27F2F5310077150D /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF469D27F2F5310077150D /* LocationDetailView.swift */; };
+		8EBF489C27F4607A003443BC /* PVLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF489B27F4607A003443BC /* PVLocations.swift */; };
+		8EBF489E27F460C4003443BC /* CKRecord+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF489D27F460C4003443BC /* CKRecord+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +37,6 @@
 		8E14E58F27F3A0A000774ABE /* Custommodifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custommodifiers.swift; sourceTree = "<group>"; };
 		8E14E59127F3A0D000774ABE /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		8E14E59627F43DA900774ABE /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
-		8E14E59B27F443BF00774ABE /* PVLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVLocation.swift; sourceTree = "<group>"; };
 		8E14E59D27F44A2600774ABE /* PVProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVProfile.swift; sourceTree = "<group>"; };
 		8E14E59F27F44BDD00774ABE /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		8E14E5A227F450C800774ABE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
@@ -54,6 +54,8 @@
 		8EBF469927F2DF510077150D /* LocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
 		8EBF469B27F2DFB40077150D /* PVNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVNewsView.swift; sourceTree = "<group>"; };
 		8EBF469D27F2F5310077150D /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
+		8EBF489B27F4607A003443BC /* PVLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVLocations.swift; sourceTree = "<group>"; };
+		8EBF489D27F460C4003443BC /* CKRecord+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				8EBF469127F2DCF50077150D /* Color+Ext.swift */,
 				8E14E59127F3A0D000774ABE /* View+Ext.swift */,
+				8EBF489D27F460C4003443BC /* CKRecord+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -121,9 +124,9 @@
 		8E14E59A27F4436A00774ABE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8E14E59B27F443BF00774ABE /* PVLocation.swift */,
 				8E14E59D27F44A2600774ABE /* PVProfile.swift */,
 				8E14E59F27F44BDD00774ABE /* MockData.swift */,
+				8EBF489B27F4607A003443BC /* PVLocations.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -265,7 +268,7 @@
 				8E14E59027F3A0A000774ABE /* Custommodifiers.swift in Sources */,
 				8EBF469427F2DD4F0077150D /* AppTabView.swift in Sources */,
 				8EBF469A27F2DF510077150D /* LocationListView.swift in Sources */,
-				8E14E59C27F443BF00774ABE /* PVLocation.swift in Sources */,
+				8EBF489C27F4607A003443BC /* PVLocations.swift in Sources */,
 				8E14E59727F43DA900774ABE /* SubmitButton.swift in Sources */,
 				8E14E59227F3A0D000774ABE /* View+Ext.swift in Sources */,
 				8E14E58427F39E3B00774ABE /* LocationCell.swift in Sources */,
@@ -273,6 +276,7 @@
 				8EBF469827F2DF2F0077150D /* ProfileView.swift in Sources */,
 				8EBF469227F2DCF50077150D /* Color+Ext.swift in Sources */,
 				8E14E5A527F4516C00774ABE /* Constants.swift in Sources */,
+				8EBF489E27F460C4003443BC /* CKRecord+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

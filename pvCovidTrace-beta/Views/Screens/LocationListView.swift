@@ -9,7 +9,7 @@ import SwiftUI
 import CloudKit
 
 struct LocationListView: View {
-    @State private var locations: [PVLocation] = [PVLocation(record: MockData.location)]
+    @State private var locations: [PVLocations] = [PVLocations(record: MockData.location)]
     
     var body: some View {
         NavigationView{

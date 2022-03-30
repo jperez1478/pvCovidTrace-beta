@@ -8,8 +8,8 @@
 import CloudKit
 
 struct CloudKitManager {
-    static func getLocations(completed: @escaping(Result<[PVLocation], Error>) -> Void) {
-        let sortDescriptor = NSSortDescriptor(key: PVLocation.rName, ascending: true)
+    static func getLocations(completed: @escaping(Result<[PVLocations], Error>) -> Void) {
+        let sortDescriptor = NSSortDescriptor(key: PVLocations.rName, ascending: true)
         let query = CKQuery(recordType: RecordType.location, predicate: NSPredicate(value: true))
         query.sortDescriptors = [sortDescriptor]
         
@@ -20,14 +20,11 @@ struct CloudKitManager {
             }
             
             guard let records = records else { return }
-            var locations: [PVLocation] = []
+           
+                let location = records.map { $0.convertToPVLocations() }
+               
             
-            for record in records {
-                let location = PVLocation(record: record)
-                locations.append(location)
-            }
-            
-            completed(.success(locations))
+            completed(.success(location))
 
         }
         

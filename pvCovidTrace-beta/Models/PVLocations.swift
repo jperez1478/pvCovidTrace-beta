@@ -1,14 +1,14 @@
 //
-//  PVLocation.swift
+//  PVLocations.swift
 //  pvCovidTrace-beta
 //
-//
+//  Created by Jessica Perez on 3/30/22.
 //
 
 import Foundation
 import CloudKit
 
-struct PVLocation {
+struct PVLocations {
     static  let rName = "name"
     static let rDescription = "description"
    static let rSquareAsset = "squareAsset"
@@ -31,13 +31,13 @@ struct PVLocation {
 
     init(record: CKRecord) {
         ckRecordID = record.recordID
-        name = record[PVLocation.rName] as?  String ?? "N/A"
-        description = record[PVLocation.rName] as? String ?? "N/A"
-        squareAsset = record[PVLocation.rSquareAsset] as? CKAsset
-        bannerAsset = record[PVLocation.rBannerAsset] as? CKAsset
-        adress = record[PVLocation.rAdress] as? String ?? "N/A"
-        location = record[PVLocation.rLocaton] as? CLLocation ?? CLLocation(latitude: 0, longitude: 0)
-        websiteURL = record[PVLocation.rWebsiteURL] as? String ?? "N/A"
+        name = record[PVLocations.rName] as?  String ?? "N/A"
+        description = record[PVLocations.rName] as? String ?? "N/A"
+        squareAsset = record[PVLocations.rSquareAsset] as? CKAsset
+        bannerAsset = record[PVLocations.rBannerAsset] as? CKAsset
+        adress = record[PVLocations.rAdress] as? String ?? "N/A"
+        location = record[PVLocations.rLocaton] as? CLLocation ?? CLLocation(latitude: 0, longitude: 0)
+        websiteURL = record[PVLocations.rWebsiteURL] as? String ?? "N/A"
     }
     
 }

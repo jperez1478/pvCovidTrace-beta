@@ -8,7 +8,7 @@
 import Foundation
 
 enum RecordType {
-    static let location = "PVLocation"
+    static let location = "PVLocations"
     static let profile = "PVProfile"
     
 }
