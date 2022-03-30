@@ -11,6 +11,12 @@
 		8E14E58C27F3A00B00774ABE /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E58B27F3A00B00774ABE /* AvatarView.swift */; };
 		8E14E59027F3A0A000774ABE /* Custommodifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E58F27F3A0A000774ABE /* Custommodifiers.swift */; };
 		8E14E59227F3A0D000774ABE /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E59127F3A0D000774ABE /* View+Ext.swift */; };
+		8E14E59727F43DA900774ABE /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E59627F43DA900774ABE /* SubmitButton.swift */; };
+		8E14E59C27F443BF00774ABE /* PVLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E59B27F443BF00774ABE /* PVLocation.swift */; };
+		8E14E59E27F44A2600774ABE /* PVProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E59D27F44A2600774ABE /* PVProfile.swift */; };
+		8E14E5A027F44BDD00774ABE /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E59F27F44BDD00774ABE /* MockData.swift */; };
+		8E14E5A327F450C800774ABE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E5A227F450C800774ABE /* CloudKitManager.swift */; };
+		8E14E5A527F4516C00774ABE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E5A427F4516C00774ABE /* Constants.swift */; };
 		8EBF468027F175170077150D /* pvCovidTrace_betaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF467F27F175170077150D /* pvCovidTrace_betaApp.swift */; };
 		8EBF468427F175180077150D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF468327F175180077150D /* Assets.xcassets */; };
 		8EBF468727F175180077150D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF468627F175180077150D /* Preview Assets.xcassets */; };
@@ -29,6 +35,12 @@
 		8E14E58B27F3A00B00774ABE /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		8E14E58F27F3A0A000774ABE /* Custommodifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custommodifiers.swift; sourceTree = "<group>"; };
 		8E14E59127F3A0D000774ABE /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
+		8E14E59627F43DA900774ABE /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
+		8E14E59B27F443BF00774ABE /* PVLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVLocation.swift; sourceTree = "<group>"; };
+		8E14E59D27F44A2600774ABE /* PVProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVProfile.swift; sourceTree = "<group>"; };
+		8E14E59F27F44BDD00774ABE /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		8E14E5A227F450C800774ABE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		8E14E5A427F4516C00774ABE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8EBF467C27F175170077150D /* pvCovidTrace-beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pvCovidTrace-beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EBF467F27F175170077150D /* pvCovidTrace_betaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pvCovidTrace_betaApp.swift; sourceTree = "<group>"; };
 		8EBF468327F175180077150D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,7 +80,9 @@
 		8E14E58E27F3A07C00774ABE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8E14E58F27F3A0A000774ABE /* Custommodifiers.swift */,
+				8E14E59927F442F200774ABE /* Screens */,
+				8E14E59327F3A12300774ABE /* CustomViews */,
+				8E14E59827F442D700774ABE /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -76,9 +90,52 @@
 		8E14E59327F3A12300774ABE /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				8E14E58F27F3A0A000774ABE /* Custommodifiers.swift */,
 				8E14E58B27F3A00B00774ABE /* AvatarView.swift */,
+				8E14E59627F43DA900774ABE /* SubmitButton.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		8E14E59827F442D700774ABE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8E14E58327F39E3B00774ABE /* LocationCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		8E14E59927F442F200774ABE /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				8EBF469327F2DD4F0077150D /* AppTabView.swift */,
+				8EBF469D27F2F5310077150D /* LocationDetailView.swift */,
+				8EBF469927F2DF510077150D /* LocationListView.swift */,
+				8EBF469527F2DD8D0077150D /* LocationMapView.swift */,
+				8EBF469727F2DF2F0077150D /* ProfileView.swift */,
+				8EBF469B27F2DFB40077150D /* PVNewsView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		8E14E59A27F4436A00774ABE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8E14E59B27F443BF00774ABE /* PVLocation.swift */,
+				8E14E59D27F44A2600774ABE /* PVProfile.swift */,
+				8E14E59F27F44BDD00774ABE /* MockData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8E14E5A127F450B200774ABE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8E14E58D27F3A06200774ABE /* Extensions */,
+				8E14E5A227F450C800774ABE /* CloudKitManager.swift */,
+				8E14E5A427F4516C00774ABE /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		8EBF467327F175170077150D = {
@@ -101,8 +158,8 @@
 		8EBF467E27F175170077150D /* pvCovidTrace-beta */ = {
 			isa = PBXGroup;
 			children = (
-				8E14E59327F3A12300774ABE /* CustomViews */,
-				8E14E58D27F3A06200774ABE /* Extensions */,
+				8E14E59A27F4436A00774ABE /* Models */,
+				8E14E5A127F450B200774ABE /* Utilities */,
 				8E14E58E27F3A07C00774ABE /* Views */,
 				8EBF468D27F175370077150D /* pvCovidTrace-beta.entitlements */,
 				8EBF467F27F175170077150D /* pvCovidTrace_betaApp.swift */,
@@ -116,13 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				8EBF468627F175180077150D /* Preview Assets.xcassets */,
-				8EBF469327F2DD4F0077150D /* AppTabView.swift */,
-				8EBF469527F2DD8D0077150D /* LocationMapView.swift */,
-				8EBF469B27F2DFB40077150D /* PVNewsView.swift */,
-				8EBF469727F2DF2F0077150D /* ProfileView.swift */,
-				8EBF469927F2DF510077150D /* LocationListView.swift */,
-				8EBF469D27F2F5310077150D /* LocationDetailView.swift */,
-				8E14E58327F39E3B00774ABE /* LocationCell.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -206,17 +256,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EBF469C27F2DFB40077150D /* PVNewsView.swift in Sources */,
+				8E14E59E27F44A2600774ABE /* PVProfile.swift in Sources */,
 				8EBF469E27F2F5310077150D /* LocationDetailView.swift in Sources */,
 				8EBF468027F175170077150D /* pvCovidTrace_betaApp.swift in Sources */,
+				8E14E5A327F450C800774ABE /* CloudKitManager.swift in Sources */,
 				8E14E58C27F3A00B00774ABE /* AvatarView.swift in Sources */,
 				8EBF469627F2DD8D0077150D /* LocationMapView.swift in Sources */,
 				8E14E59027F3A0A000774ABE /* Custommodifiers.swift in Sources */,
 				8EBF469427F2DD4F0077150D /* AppTabView.swift in Sources */,
 				8EBF469A27F2DF510077150D /* LocationListView.swift in Sources */,
+				8E14E59C27F443BF00774ABE /* PVLocation.swift in Sources */,
+				8E14E59727F43DA900774ABE /* SubmitButton.swift in Sources */,
 				8E14E59227F3A0D000774ABE /* View+Ext.swift in Sources */,
 				8E14E58427F39E3B00774ABE /* LocationCell.swift in Sources */,
+				8E14E5A027F44BDD00774ABE /* MockData.swift in Sources */,
 				8EBF469827F2DF2F0077150D /* ProfileView.swift in Sources */,
 				8EBF469227F2DCF50077150D /* Color+Ext.swift in Sources */,
+				8E14E5A527F4516C00774ABE /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct LocationListView: View {
+    @State private var locations: [PVLocation] = [PVLocation(record: MockData.location)]
+    
     var body: some View {
         NavigationView{
             List {
-                ForEach(0..<10) { item in
-                    NavigationLink(destination: LocationDetailView()) {
-                        LocationCell()
+                ForEach(locations, id: \.ckRecordID) { location  in
+                    NavigationLink(destination: LocationDetailView(locations: location)) {
+                        LocationCell(location:  location)
                     }
                         
                     }

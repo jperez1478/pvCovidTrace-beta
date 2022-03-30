@@ -14,17 +14,14 @@ struct LocationDetailView: View {
                    GridItem(.flexible())
     ]
     
+    var locations: PVLocation
+    
     var body: some View {
         VStack(spacing: 16) {
-            Image("Icon-1024-")
-                .resizable()
-                .scaledToFill()
-                .frame(height: 120)
+            BannerImageView(imageName: "Icon-1024-")
             
             HStack {
-                Label("123 Main Street", systemImage: "mappin.and.ellipse")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                AdressView(adressString: locations.adress)
                 
                 Spacer()
             }
@@ -32,11 +29,8 @@ struct LocationDetailView: View {
             
             
             //this can be fixed
-            Text("make pv safe , check in where you had been depeding on your status, report to offical school network by the network globe button")
-                .lineLimit(3)
-                .minimumScaleFactor(0.75)
-                .frame(height: 70)
-                .padding(.horizontal)
+            DescriptionView(text:
+                                locations.description)
             
             
             ZStack{
@@ -49,7 +43,7 @@ struct LocationDetailView: View {
                     } label: {
                         LocationActionButton(color: .brandPrimary, imageName: "location.fill")
                     }
-                    Link(destination: URL(string: "https://pvamu.co1.qualtrics.com/jfe/form/SV_cFHoR4fAzZLER1A")!, label:  {
+                    Link(destination: URL(string: locations.websiteURL)!, label:  {
                         
                         Button {
                         } label: {
@@ -87,7 +81,7 @@ struct LocationDetailView: View {
           
             Spacer()
         }
-        .navigationTitle("LocationName")
+        .navigationTitle(locations.name)
         .navigationBarTitleDisplayMode(.inline)
     }
     
@@ -97,7 +91,10 @@ struct LocationDetailView: View {
 
 struct LocationDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationDetailView()
+        NavigationView{
+            LocationDetailView(locations: PVLocation(record: MockData.location))
+        }
+       
     }
 }
 
@@ -127,8 +124,6 @@ struct LocationActionButton: View {
 
 struct FirstNameAvatarView: View {
     var firstName: String
-    
-    
     var body: some View{
         VStack{
             AvatarView(size: 64)
@@ -140,5 +135,38 @@ struct FirstNameAvatarView: View {
             
         }
         
+    }
+}
+
+struct BannerImageView: View {
+    var imageName: String
+    
+    var body: some View {
+        Image(imageName)
+            .resizable()
+            .scaledToFill()
+            .frame(height: 120)
+    }
+}
+
+struct AdressView: View {
+    var adressString: String
+    
+    var body: some View {
+        Label(adressString, systemImage: "mappin.and.ellipse")
+            .font(.caption)
+            .foregroundColor(.secondary)
+    }
+}
+
+struct DescriptionView: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .lineLimit(3)
+            .minimumScaleFactor(0.75)
+            .frame(height: 70)
+            .padding(.horizontal)
     }
 }

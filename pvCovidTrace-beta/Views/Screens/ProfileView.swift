@@ -48,7 +48,6 @@ struct ProfileView: View {
             
             VStack(alignment: .leading, spacing: 8){
                 CharactersRemainingView(currentCount:  covidStatus.count)
-                
                 TextEditor(text: $covidStatus)
                     .frame(width: 100, height: 50)
                     .overlay(RoundedRectangle(cornerRadius: 8)
@@ -64,12 +63,7 @@ struct ProfileView: View {
             
             Button {
             } label: {
-                Text("Submit Status")
-                    .bold()
-                    .frame(width: 280, height: 44)
-                    .background(Color.brandPrimary)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
+               submitButton(title: "Submit Status")
                     
             }
         }
