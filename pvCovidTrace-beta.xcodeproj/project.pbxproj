@@ -80,7 +80,6 @@
 				8EBF469127F2DCF50077150D /* Color+Ext.swift */,
 				8E14E59127F3A0D000774ABE /* View+Ext.swift */,
 				8EBF489D27F460C4003443BC /* CKRecord+Ext.swift */,
-				8EBF489F27F46227003443BC /* AlertItem.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -141,6 +140,7 @@
 			children = (
 				8E14E58D27F3A06200774ABE /* Extensions */,
 				8E14E5A227F450C800774ABE /* CloudKitManager.swift */,
+				8EBF489F27F46227003443BC /* AlertItem.swift */,
 				8E14E5A427F4516C00774ABE /* Constants.swift */,
 			);
 			path = Utilities;

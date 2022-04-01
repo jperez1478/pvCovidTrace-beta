@@ -11,7 +11,7 @@ struct CloudKitManager {
     static func getLocations(completed: @escaping(Result<[PVLocations], Error>) -> Void) {
         let sortDescriptor = NSSortDescriptor(key: PVLocations.kName, ascending: true)
         let query = CKQuery(recordType: RecordType.location, predicate: NSPredicate(value: true))
-        query.sortDescriptors = [sortDescriptor]
+       query.sortDescriptors = [sortDescriptor]
         
         CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil)  {  records, error in
             guard error == nil else {
@@ -21,13 +21,7 @@ struct CloudKitManager {
             
             guard let records = records else { return }
                 
-            var locations: [PVLocations] = []
-    
-            
-            for record in records {
-                let location = PVLocations(record: record)
-                locations.append(location)
-            }
+            let locations = records.map { $0.convertToPVLocations()}
             
             completed(.success(locations))
             }
