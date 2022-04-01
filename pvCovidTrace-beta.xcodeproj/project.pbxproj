@@ -18,6 +18,8 @@
 		8E14E5A527F4516C00774ABE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E5A427F4516C00774ABE /* Constants.swift */; };
 		8E9C8F3327F6F14200A313CB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C8F3227F6F14200A313CB /* LocationManager.swift */; };
 		8E9C8F3527F6F93C00A313CB /* CKAsset+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C8F3427F6F93C00A313CB /* CKAsset+Ext.swift */; };
+		8E9C8F3727F70FA100A313CB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C8F3627F70FA100A313CB /* OnboardingView.swift */; };
+		8E9C8F3927F70FDC00A313CB /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C8F3827F70FDC00A313CB /* LogoView.swift */; };
 		8EBF468027F175170077150D /* pvCovidTrace_betaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF467F27F175170077150D /* pvCovidTrace_betaApp.swift */; };
 		8EBF468427F175180077150D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF468327F175180077150D /* Assets.xcassets */; };
 		8EBF468727F175180077150D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF468627F175180077150D /* Preview Assets.xcassets */; };
@@ -47,6 +49,8 @@
 		8E14E5A427F4516C00774ABE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8E9C8F3227F6F14200A313CB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		8E9C8F3427F6F93C00A313CB /* CKAsset+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKAsset+Ext.swift"; sourceTree = "<group>"; };
+		8E9C8F3627F70FA100A313CB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		8E9C8F3827F70FDC00A313CB /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		8EBF467C27F175170077150D /* pvCovidTrace-beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pvCovidTrace-beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EBF467F27F175170077150D /* pvCovidTrace_betaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pvCovidTrace_betaApp.swift; sourceTree = "<group>"; };
 		8EBF468327F175180077150D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 				8E14E58F27F3A0A000774ABE /* Custommodifiers.swift */,
 				8E14E58B27F3A00B00774ABE /* AvatarView.swift */,
 				8E14E59627F43DA900774ABE /* SubmitButton.swift */,
+				8E9C8F3827F70FDC00A313CB /* LogoView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 				8EBF469927F2DF510077150D /* LocationListView.swift */,
 				8EBF469727F2DF2F0077150D /* ProfileView.swift */,
 				8EBF469B27F2DFB40077150D /* PVNewsView.swift */,
+				8E9C8F3627F70FA100A313CB /* OnboardingView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -306,7 +312,9 @@
 				8E14E5A027F44BDD00774ABE /* MockData.swift in Sources */,
 				8EBF469827F2DF2F0077150D /* ProfileView.swift in Sources */,
 				8EBF469227F2DCF50077150D /* Color+Ext.swift in Sources */,
+				8E9C8F3927F70FDC00A313CB /* LogoView.swift in Sources */,
 				8E14E5A527F4516C00774ABE /* Constants.swift in Sources */,
+				8E9C8F3727F70FA100A313CB /* OnboardingView.swift in Sources */,
 				8EBF489E27F460C4003443BC /* CKRecord+Ext.swift in Sources */,
 				8E9C8F3527F6F93C00A313CB /* CKAsset+Ext.swift in Sources */,
 			);
