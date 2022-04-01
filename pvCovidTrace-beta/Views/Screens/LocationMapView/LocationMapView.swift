@@ -11,12 +11,20 @@ import CloudKit
 
 struct LocationMapView: View {
     
+ 
+@EnvironmentObject private var locationManager: LocationManager
  @StateObject private var viewModel = LocationMapViewModel()
   
  
     var body: some View {
         ZStack {
-            Map(coordinateRegion: $viewModel.region)
+           
+            Map(coordinateRegion: $viewModel.region, annotationItems: locationManager.locations) { location in
+                
+                MapMarker(coordinate: location.location.coordinate, tint: .brandPrimary)
+                
+                
+            }
                 .ignoresSafeArea()
             
             VStack {
@@ -32,8 +40,11 @@ struct LocationMapView: View {
         })
         
         .onAppear {
-            viewModel.getLocations()
-                
+            if locationManager.locations.isEmpty {
+                viewModel.getLocations(for: locationManager)
+                    
+            }
+            
             }
         }
     }

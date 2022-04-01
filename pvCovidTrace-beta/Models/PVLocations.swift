@@ -8,7 +8,7 @@
 import Foundation
 import CloudKit
 
-struct PVLocations {
+struct PVLocations: Identifiable {
     
     static  let kName = "name"
     static let kDescription = "description"
@@ -18,7 +18,7 @@ struct PVLocations {
     static let kLocaton = "location"
     static let kWebsiteURL = "websiteURL"
     
-    let ckRecordID: CKRecord.ID
+    let id: CKRecord.ID
     let name: String
     let description: String
     let squareAsset: CKAsset!
@@ -31,7 +31,7 @@ struct PVLocations {
     ///Member wise initiliazier
 
     init(record: CKRecord) {
-        ckRecordID = record.recordID
+        id = record.recordID
         name = record[PVLocations.kName] as?  String ?? "N/A"
         description = record[PVLocations.kDescription] as? String ?? "N/A"
         squareAsset = record[PVLocations.kSquareAsset] as? CKAsset
