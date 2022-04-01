@@ -17,6 +17,7 @@
 		8E14E5A327F450C800774ABE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E5A227F450C800774ABE /* CloudKitManager.swift */; };
 		8E14E5A527F4516C00774ABE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E5A427F4516C00774ABE /* Constants.swift */; };
 		8E9C8F3327F6F14200A313CB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C8F3227F6F14200A313CB /* LocationManager.swift */; };
+		8E9C8F3527F6F93C00A313CB /* CKAsset+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C8F3427F6F93C00A313CB /* CKAsset+Ext.swift */; };
 		8EBF468027F175170077150D /* pvCovidTrace_betaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF467F27F175170077150D /* pvCovidTrace_betaApp.swift */; };
 		8EBF468427F175180077150D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF468327F175180077150D /* Assets.xcassets */; };
 		8EBF468727F175180077150D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF468627F175180077150D /* Preview Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		8E14E5A227F450C800774ABE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		8E14E5A427F4516C00774ABE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8E9C8F3227F6F14200A313CB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		8E9C8F3427F6F93C00A313CB /* CKAsset+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKAsset+Ext.swift"; sourceTree = "<group>"; };
 		8EBF467C27F175170077150D /* pvCovidTrace-beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pvCovidTrace-beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EBF467F27F175170077150D /* pvCovidTrace_betaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pvCovidTrace_betaApp.swift; sourceTree = "<group>"; };
 		8EBF468327F175180077150D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				8EBF469127F2DCF50077150D /* Color+Ext.swift */,
 				8E14E59127F3A0D000774ABE /* View+Ext.swift */,
 				8EBF489D27F460C4003443BC /* CKRecord+Ext.swift */,
+				8E9C8F3427F6F93C00A313CB /* CKAsset+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				8EBF469227F2DCF50077150D /* Color+Ext.swift in Sources */,
 				8E14E5A527F4516C00774ABE /* Constants.swift in Sources */,
 				8EBF489E27F460C4003443BC /* CKRecord+Ext.swift in Sources */,
+				8E9C8F3527F6F93C00A313CB /* CKAsset+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
