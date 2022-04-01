@@ -11,13 +11,12 @@ import CloudKit
 
 struct LocationMapView: View {
     
- // @StateObject private var viewModel = LocationMapViewModel()
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:30.09349, longitude: -95.99029),
-                                                   span: MKCoordinateSpan (latitudeDelta: 0.1, longitudeDelta: 0.1))
-    @State private var alertItem: AlertItem?
+ @StateObject private var viewModel = LocationMapViewModel()
+  
+ 
     var body: some View {
         ZStack {
-            Map(coordinateRegion: $region)
+            Map(coordinateRegion: $viewModel.region)
                 .ignoresSafeArea()
             
             VStack {
@@ -27,25 +26,18 @@ struct LocationMapView: View {
             }
         }
          
-        .alert(item: $alertItem, content: { alertItem in
+        .alert(item: $viewModel.alertItem, content: { alertItem in
             Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dissmissButton)
             
         })
         
         .onAppear {
-            CloudKitManager.getLocations { result in
-                switch result {
-                    
-                case .success(let locations):
-                    print(locations)
-                case .failure(_):
-                    alertItem = AlertContext.unableToGetLocations
-                }
+            viewModel.getLocations()
                 
-            }
             }
         }
     }
+    
 
 
 struct LocationMapView_Previews: PreviewProvider {
