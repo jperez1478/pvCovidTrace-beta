@@ -9,11 +9,11 @@ import Foundation
 import CloudKit
 
 struct PVProfile {
-    static  let rFirstName = "firstName"
-    static let rLastName = "lastName"
-    static let rAvatar = "Avatar"
-  static let rCovidStatus = "covidStatus"
-    static let rIsCheckedIn = " isCheckedIn"
+    static  let kFirstName   = "firstName"
+    static let kLastName     = "lastName"
+    static let kAvatar       = "avatar"
+    static let kCovidStatus  = "covidStatus"
+    static let kIsCheckedIn   = " isCheckedIn"
     
     let ckRecordID: CKRecord.ID
     let firstName: String
@@ -27,10 +27,10 @@ struct PVProfile {
 
     init(record: CKRecord) {
         ckRecordID = record.recordID
-        firstName = record[PVProfile.rFirstName] as?  String ?? "N/A"
-       lastName = record[PVProfile.rLastName] as? String ?? "N/A"
-        avatar = record[PVProfile.rAvatar] as? CKAsset
-        covidStatus = record[PVProfile.rCovidStatus] as? String ?? "N/A"
+        firstName = record[PVProfile.kFirstName] as?  String ?? "N/A"
+        lastName = record[PVProfile.kLastName] as? String ?? "N/A"
+        avatar = record[PVProfile.kAvatar] as? CKAsset
+        covidStatus = record[PVProfile.kCovidStatus] as? String ?? "N/A"
         
     }
     

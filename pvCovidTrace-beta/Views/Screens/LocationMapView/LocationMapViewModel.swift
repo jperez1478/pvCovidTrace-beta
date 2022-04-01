@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 
 final class LocationMapViewModel: ObservableObject {
-    @Published   var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 30.09233, longitude: -95.99039), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+    @Published   var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 30.09233, longitude: -95.99029), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
     
     @Published  var alertItem: AlertItem?
     

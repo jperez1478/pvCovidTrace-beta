@@ -14,14 +14,14 @@ struct LocationDetailView: View {
                    GridItem(.flexible())
     ]
     
-    var locations: PVLocations
+    var location: PVLocations
     
     var body: some View {
         VStack(spacing: 16) {
             BannerImageView(imageName: "Icon-1024-")
             
             HStack {
-                AdressView(adressString: locations.adress)
+                AdressView(adressString: location.adress)
                 
                 Spacer()
             }
@@ -29,8 +29,7 @@ struct LocationDetailView: View {
             
             
             //this can be fixed
-            DescriptionView(text:
-                                locations.description)
+            DescriptionView(text: location.description)
             
             
             ZStack{
@@ -43,7 +42,7 @@ struct LocationDetailView: View {
                     } label: {
                         LocationActionButton(color: .brandPrimary, imageName: "location.fill")
                     }
-                    Link(destination: URL(string: locations.websiteURL)!, label:  {
+                    Link(destination: URL(string: location.websiteURL)!, label:  {
                         
                         Button {
                         } label: {
@@ -81,7 +80,7 @@ struct LocationDetailView: View {
           
             Spacer()
         }
-        .navigationTitle(locations.name)
+        .navigationTitle(location.name)
         .navigationBarTitleDisplayMode(.inline)
     }
     
@@ -92,7 +91,7 @@ struct LocationDetailView: View {
 struct LocationDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            LocationDetailView(locations: PVLocations(record: MockData.location))
+            LocationDetailView(location: PVLocations(record: MockData.location))
         }
        
     }

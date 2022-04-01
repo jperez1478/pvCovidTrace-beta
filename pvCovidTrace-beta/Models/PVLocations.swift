@@ -9,13 +9,14 @@ import Foundation
 import CloudKit
 
 struct PVLocations {
-    static  let rName = "name"
-    static let rDescription = "description"
-   static let rSquareAsset = "squareAsset"
-    static let  rBannerAsset = "bannerAsset"
-    static let rAdress = "adress"
-    static let rLocaton = "location"
-    static let rWebsiteURL = "websiteURL"
+    
+    static  let kName = "name"
+    static let kDescription = "description"
+    static let kSquareAsset = "squareAsset"
+    static let  kBannerAsset = "bannerAsset"
+    static let kAdress = "adress"
+    static let kLocaton = "location"
+    static let kWebsiteURL = "websiteURL"
     
     let ckRecordID: CKRecord.ID
     let name: String
@@ -31,13 +32,13 @@ struct PVLocations {
 
     init(record: CKRecord) {
         ckRecordID = record.recordID
-        name = record[PVLocations.rName] as?  String ?? "N/A"
-        description = record[PVLocations.rName] as? String ?? "N/A"
-        squareAsset = record[PVLocations.rSquareAsset] as? CKAsset
-        bannerAsset = record[PVLocations.rBannerAsset] as? CKAsset
-        adress = record[PVLocations.rAdress] as? String ?? "N/A"
-        location = record[PVLocations.rLocaton] as? CLLocation ?? CLLocation(latitude: 0, longitude: 0)
-        websiteURL = record[PVLocations.rWebsiteURL] as? String ?? "N/A"
+        name = record[PVLocations.kName] as?  String ?? "N/A"
+        description = record[PVLocations.kDescription] as? String ?? "N/A"
+        squareAsset = record[PVLocations.kSquareAsset] as? CKAsset
+        bannerAsset = record[PVLocations.kBannerAsset] as? CKAsset
+        adress = record[PVLocations.kAdress] as? String ?? "N/A"
+        location = record[PVLocations.kLocaton] as? CLLocation ?? CLLocation(latitude: 0, longitude: 0)
+        websiteURL = record[PVLocations.kWebsiteURL] as? String ?? "N/A"
     }
     
 }

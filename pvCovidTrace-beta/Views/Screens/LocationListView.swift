@@ -14,9 +14,9 @@ struct LocationListView: View {
     var body: some View {
         NavigationView{
             List {
-                ForEach(locations, id: \.ckRecordID) { location  in
-                    NavigationLink(destination: LocationDetailView(locations: location)) {
-                        LocationCell(location:  location)
+                ForEach(locations, id: \.ckRecordID) {  location   in
+                    NavigationLink(destination: LocationDetailView(location: location)) {
+                        LocationCell(location: location)
                     }
                         
                     }
