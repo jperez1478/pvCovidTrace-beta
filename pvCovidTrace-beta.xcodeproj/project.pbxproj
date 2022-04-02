@@ -35,6 +35,7 @@
 		8EBF489E27F460C4003443BC /* CKRecord+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF489D27F460C4003443BC /* CKRecord+Ext.swift */; };
 		8EBF48A027F46227003443BC /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF489F27F46227003443BC /* AlertItem.swift */; };
 		8EBF48A327F464BB003443BC /* LocationMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBF48A227F464BB003443BC /* LocationMapViewModel.swift */; };
+		F1BB637D27F7E23C00EC7253 /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BB637C27F7E23C00EC7253 /* XDismissButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		8EBF489D27F460C4003443BC /* CKRecord+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Ext.swift"; sourceTree = "<group>"; };
 		8EBF489F27F46227003443BC /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		8EBF48A227F464BB003443BC /* LocationMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapViewModel.swift; sourceTree = "<group>"; };
+		F1BB637C27F7E23C00EC7253 /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,9 +108,9 @@
 		8E14E59327F3A12300774ABE /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				F1BB637B27F7E1FB00EC7253 /* Buttons */,
 				8E14E58F27F3A0A000774ABE /* Custommodifiers.swift */,
 				8E14E58B27F3A00B00774ABE /* AvatarView.swift */,
-				8E14E59627F43DA900774ABE /* SubmitButton.swift */,
 				8E9C8F3827F70FDC00A313CB /* LogoView.swift */,
 			);
 			path = CustomViews;
@@ -222,6 +224,15 @@
 			path = LocationMapView;
 			sourceTree = "<group>";
 		};
+		F1BB637B27F7E1FB00EC7253 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				8E14E59627F43DA900774ABE /* SubmitButton.swift */,
+				F1BB637C27F7E23C00EC7253 /* XDismissButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EBF469C27F2DFB40077150D /* PVNewsView.swift in Sources */,
+				F1BB637D27F7E23C00EC7253 /* XDismissButton.swift in Sources */,
 				8E14E59E27F44A2600774ABE /* PVProfile.swift in Sources */,
 				8EBF469E27F2F5310077150D /* LocationDetailView.swift in Sources */,
 				8EBF468027F175170077150D /* pvCovidTrace_betaApp.swift in Sources */,

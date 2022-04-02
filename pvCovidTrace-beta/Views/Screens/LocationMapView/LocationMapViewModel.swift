@@ -9,12 +9,28 @@ import Foundation
 import MapKit
 
 final class LocationMapViewModel: NSObject, ObservableObject {
-    @Published   var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 30.09233,
+    
+    @Published var isShowingOnBoardView = false
+    @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 30.09233,
                                                                                 longitude:     -95.99029),
                                                                                  span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
-    @Published  var alertItem: AlertItem?
+    @Published var alertItem: AlertItem?
     
     var deviceLocationManager: CLLocationManager?
+    let kHasSeenOnBoardView = "hasSeenOnBoardView"
+    
+    var hasSeenOnBoardView: Bool{
+        return UserDefaults.standard.bool(forKey: kHasSeenOnBoardView)
+    }
+    
+    func runStartUpChecks() {
+        if !hasSeenOnBoardView{
+            isShowingOnBoardView = true
+            UserDefaults.standard.set(true, forKey: kHasSeenOnBoardView)
+        } else{
+            checkIfLocationServicesIsEnabled()
+        }
+    }
     
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {

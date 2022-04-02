@@ -8,17 +8,34 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    
+    @Binding var isShowingOnBoardView: Bool
     var body: some View {
         VStack {
+            HStack{
+                Spacer()
+                Button{
+                    isShowingOnBoardView = false
+                } label:{
+                    XDismissButton()
+                }
+                .padding()
+            }
+            Spacer()
+            
             LogoView(frameWidth: 250)
-            VStack(alignment: .leading) {
+                .padding(.bottom)
+            
+            
+            VStack(alignment: .leading, spacing: 32) {
                 OnboardingInfoView(imageName: "building.2.crop.circle", title: "Campus Locations", description: "Campus Locations to check in")
                 OnboardingInfoView(imageName: "checkmark.circle", title: "Check In ", description: "Check in where you had been prior your status ")
                 OnboardingInfoView(imageName: "person.2.circle", title: "Keep PVComunity Safe", description: "locations check in help students be aware")
                 OnboardingInfoView(imageName: "building.2.crop.circle", title: "Campus Locations", description: "Check in where you had been prior your status ")
             }
             
-            .padding()
+            .padding(.horizontal, 40)
+            Spacer()
                         
                 }
             }
@@ -29,7 +46,7 @@ struct OnboardingView: View {
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView()
+        OnboardingView(isShowingOnBoardView: .constant(true))
     }
 }
 
@@ -45,7 +62,7 @@ struct OnboardingInfoView: View {
                 .frame(width: 50, height: 50)
                 .foregroundColor(.brandPrimary)
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(title).bold()
                 
                 Text(description)
