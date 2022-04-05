@@ -36,8 +36,13 @@ struct OnboardingView: View {
             
             .padding(.horizontal, 40)
             Spacer()
+            Spacer()
+            Spacer()
                         
                 }
+        HStack{
+            
+        }
             }
 
 
