@@ -14,6 +14,9 @@ struct ProfileView: View {
     @State private var lastName     = ""
   
     @State private var covidStatus         = ""
+    @State private var avatar  =  PlaceholderImage.avatar
+    
+    @State private var alertItem: AlertItem?
         
     
     var body: some View {
@@ -55,21 +58,53 @@ struct ProfileView: View {
                     
         }
         
-        
-            
-            .padding(.horizontal, 20)
+        .padding(.horizontal, 20)
             
             Spacer()
             
             Button {
+                createProfile()
             } label: {
                submitButton(title: "Submit Status")
                     
             }
+            
+            .padding(.bottom)
         }
         .navigationTitle("Profile")
+        .toolbar {
+            Button {
+                dismissKeyboard()
+            } label: {
+                Image(systemName: "keyboard.chevron.compact.down")
+            }
+        }
+        
+        .alert(item: $alertItem, content: { alertItem in
+            Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dissmissButton)
+            
+        })
     }
+
+func isValidProfile() -> Bool {
+    guard   !firstName.isEmpty,
+                !lastName.isEmpty,
+                !covidStatus.isEmpty,
+            covidStatus.count < 100 else { return false }
+                
+       return true
+    }
+    
+    func createProfile() {
+        guard isValidProfile()  else {
+            alertItem = AlertContext.invalidProfile
+            return
+        }
+    }
+        
 }
+    
+
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {

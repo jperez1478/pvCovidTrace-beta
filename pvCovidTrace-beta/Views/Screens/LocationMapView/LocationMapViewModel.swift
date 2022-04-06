@@ -10,7 +10,7 @@ import MapKit
 
 final class LocationMapViewModel: NSObject, ObservableObject {
     
-    @Published var isShowingOnBoardView = false
+    @Published var isShowingOnBoardView = true
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 30.09233,
                                                                                 longitude:     -95.99029),
                                                                                  span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))

@@ -35,5 +35,11 @@ struct AlertContext {
     static let locationDisabled = AlertItem(title:Text(" Location Disabled"),
                                                 message: Text("Your phone's location services are disabled. To change that go to your phone's settins > Privacy > Location Services"),
                                                 dissmissButton:  .default(Text("Ok")))
-  
+ 
+    //MARK: - ProfileViewErrors
+    static let invalidProfile = AlertItem(title:Text(" Invalid Profile"),
+                                                message: Text("All fields are required as well as covidStatus. Covid status wont be shown to other students only Visible to you"),
+                                                dissmissButton:  .default(Text("Ok")))
+
+    
 }
