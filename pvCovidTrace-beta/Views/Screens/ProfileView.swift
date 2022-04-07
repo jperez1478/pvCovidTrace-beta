@@ -64,7 +64,7 @@ struct ProfileView: View {
             Spacer()
             
             Button {
-                createProfile()
+               // createProfile()
             } label: {
                submitButton(title: "Submit Status")
                     
@@ -80,6 +80,9 @@ struct ProfileView: View {
                 Image(systemName: "keyboard.chevron.compact.down")
             }
         }
+        .onAppear { getProfile() }
+            
+        
         
         .alert(item: $alertItem, content: { alertItem in
             Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dissmissButton)
@@ -144,7 +147,47 @@ func isValidProfile() -> Bool {
         }
         
     }
-        
+    
+    //get user record to reference userID
+    func getProfile(){
+        CKContainer.default().fetchUserRecordID { recordID, error  in
+            guard  let recordID =  recordID, error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            //Get UserRecord from the Public Database
+            CKContainer.default().publicCloudDatabase.fetch(withRecordID:  recordID) { userRecord, error in
+                guard let userRecord = userRecord, error == nil else {
+                    print(error!.localizedDescription)
+                    return
+                }
+                
+                let  profileRefrence = userRecord["userProfile"] as! CKRecord.Reference
+                let profileRecordID = profileRefrence.recordID
+                
+                CKContainer.default().publicCloudDatabase.fetch(withRecordID: profileRecordID) { profileRecord, error in
+                    guard let profileRecord = profileRecord, error == nil else {
+                        print(error!.localizedDescription)
+                        
+                        return
+                    }
+                    
+                    //update UI
+                    DispatchQueue.main.async {
+                        let profile = PVProfile(record: profileRecord)
+                        firstName = profile.firstName
+                        lastName = profile.lastName
+                        covidStatus = profile.covidStatus
+                    }
+
+                    
+                    
+                }
+                
+            }
+    }
+    }
 }
     
 
