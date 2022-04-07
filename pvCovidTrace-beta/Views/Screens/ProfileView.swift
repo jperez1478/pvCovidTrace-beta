@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import CloudKit
 
 struct ProfileView: View {
     
@@ -90,7 +91,7 @@ func isValidProfile() -> Bool {
     guard   !firstName.isEmpty,
                 !lastName.isEmpty,
                 !covidStatus.isEmpty,
-            covidStatus.count < 100 else { return false }
+            covidStatus.count < 20 else { return false }
                 
        return true
     }
@@ -100,6 +101,48 @@ func isValidProfile() -> Bool {
             alertItem = AlertContext.invalidProfile
             return
         }
+        
+        // Create our CKRecord from the profileView
+        let profileRecord = CKRecord(recordType: RecordType.profile)
+        profileRecord[PVProfile.kFirstName] = firstName
+        profileRecord[PVProfile.kLastName] =  lastName
+        profileRecord[PVProfile.kCovidStatus] = covidStatus
+        // Get our UserRecordID from the Container
+        CKContainer.default().fetchUserRecordID { recordID, error  in
+            guard  let recordID =  recordID, error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            //Get UserRecord from the Public Database
+            CKContainer.default().publicCloudDatabase.fetch(withRecordID:  recordID) { userRecord, error in
+                guard let userRecord = userRecord, error == nil else {
+                    print(error!.localizedDescription)
+                    return
+                }
+                
+                // Create refrence on UserRecord to the PVProfile we created
+                userRecord["userProfile"] = CKRecord.Reference(recordID: profileRecord.recordID, action: .none)
+                
+                // Create a CKOperarion to save  User and Profile Records
+                //ARRAY of users to create
+                let operation = CKModifyRecordsOperation(recordsToSave: [userRecord, profileRecord])
+                //modifier for record
+                operation.modifyRecordsCompletionBlock = { savedRecords, _, error in
+                    guard let savedRecords = savedRecords, error == nil else {
+                        print(error!.localizedDescription)
+                        return
+                        
+                }
+                    
+                    //if records save print to test
+                print(savedRecords)
+            }
+                
+                CKContainer.default().publicCloudDatabase.add(operation) //similar to url session like network call
+        }
+            
+        }
+        
     }
         
 }
