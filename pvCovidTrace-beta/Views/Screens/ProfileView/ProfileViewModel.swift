@@ -63,6 +63,7 @@ final class ProfileViewModel: ObservableObject {
                 case .success(let records):
                     for record in records where record.recordType ==  RecordType.profile {
                         existingProfileRecord = record
+                        CloudKitManager.shared.profileRecordID = record.recordID
                         
                     }
                     
