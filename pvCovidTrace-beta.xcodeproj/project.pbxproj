@@ -17,6 +17,7 @@
 		8E14E5A327F450C800774ABE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E5A227F450C800774ABE /* CloudKitManager.swift */; };
 		8E14E5A527F4516C00774ABE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E14E5A427F4516C00774ABE /* Constants.swift */; };
 		8E3982DF27FEC2B800F9897B /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3982DE27FEC2B800F9897B /* ProfileViewModel.swift */; };
+		8E7035BA28006E4F008BE966 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7035B928006E4F008BE966 /* LoadingView.swift */; };
 		8E9C8F3327F6F14200A313CB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C8F3227F6F14200A313CB /* LocationManager.swift */; };
 		8E9C8F3527F6F93C00A313CB /* CKAsset+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C8F3427F6F93C00A313CB /* CKAsset+Ext.swift */; };
 		8E9C8F3727F70FA100A313CB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C8F3627F70FA100A313CB /* OnboardingView.swift */; };
@@ -50,6 +51,7 @@
 		8E14E5A227F450C800774ABE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		8E14E5A427F4516C00774ABE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8E3982DE27FEC2B800F9897B /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		8E7035B928006E4F008BE966 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		8E9C8F3227F6F14200A313CB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		8E9C8F3427F6F93C00A313CB /* CKAsset+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKAsset+Ext.swift"; sourceTree = "<group>"; };
 		8E9C8F3627F70FA100A313CB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				8E14E58F27F3A0A000774ABE /* Custommodifiers.swift */,
 				8E14E58B27F3A00B00774ABE /* AvatarView.swift */,
 				8E9C8F3827F70FDC00A313CB /* LogoView.swift */,
+				8E7035B928006E4F008BE966 /* LoadingView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				8E14E59E27F44A2600774ABE /* PVProfile.swift in Sources */,
 				8E3982DF27FEC2B800F9897B /* ProfileViewModel.swift in Sources */,
 				8EBF469E27F2F5310077150D /* LocationDetailView.swift in Sources */,
+				8E7035BA28006E4F008BE966 /* LoadingView.swift in Sources */,
 				8EBF468027F175170077150D /* pvCovidTrace_betaApp.swift in Sources */,
 				8E14E5A327F450C800774ABE /* CloudKitManager.swift in Sources */,
 				8E14E58C27F3A00B00774ABE /* AvatarView.swift in Sources */,

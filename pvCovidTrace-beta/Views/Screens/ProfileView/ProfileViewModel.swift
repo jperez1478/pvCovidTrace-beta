@@ -7,12 +7,21 @@
 
 import CloudKit
 
+enum ProfileContext { case create, update }
+
 final class ProfileViewModel: ObservableObject {
     @Published var firstName         = ""
     @Published var lastName           = ""
     @Published var covidStatus      = ""
     @Published var avatar              =  PlaceholderImage.avatar
     @Published var alertItem:       AlertItem?
+    
+    @Published var isLoading = false
+    
+    private var existingProfileRecord: CKRecord? {
+        didSet { profileContext = .update }
+    }
+    var profileContext: ProfileContext = .create
         
     
     
@@ -35,7 +44,7 @@ final class ProfileViewModel: ObservableObject {
         let profileRecord = createProfileRecord()
         
         guard let userRecord = CloudKitManager.shared.userRecord else {
-            //show alert
+            alertItem = AlertContext.noUserRecord
             
             return
         }
@@ -44,14 +53,24 @@ final class ProfileViewModel: ObservableObject {
         // Create refrence on UserRecord to the PVProfile we created
         userRecord["userProfile"] = CKRecord.Reference(recordID: profileRecord.recordID, action: .none)
        
+        
+        showLoadingView()
         CloudKitManager.shared.batchSave(records: [userRecord, profileRecord]) { result in
-            switch result {
-            case .success(_):
-                //show laert
-                break
+            DispatchQueue.main.async { [self] in
+                hideLoadingView()
                 
-            case .failure(_):
-                break
+                switch result {
+                case .success(let records):
+                    for record in records where record.recordType ==  RecordType.profile {
+                        existingProfileRecord = record
+                        
+                    }
+                    
+                    alertItem = AlertContext.createProfileSuccess
+                case .failure(_):
+                    alertItem = AlertContext.createProfileFailure
+                    break
+                }
             }
         }
         
@@ -62,8 +81,7 @@ final class ProfileViewModel: ObservableObject {
     //get user record to reference userID
     func getProfile(){
         guard let userRecord = CloudKitManager.shared.userRecord else {
-            //show alert
-            
+            alertItem = AlertContext.noUserRecord
             return
         }
         
@@ -74,29 +92,60 @@ final class ProfileViewModel: ObservableObject {
         
        let profileRecordID = profileRefrence.recordID
         
+        showLoadingView()
         CloudKitManager.shared.fetchRecord(with: profileRecordID) { result  in
             DispatchQueue.main.async { [self] in
-            switch result {
+                hideLoadingView()
+                switch result {
                 
-            case .success(let record):
-                //update UI
-              
-                    let profile = PVProfile(record: record)
+                case .success(let record):
+                    existingProfileRecord =  record
+                   let profile = PVProfile(record: record)
                     firstName = profile.firstName
                     lastName = profile.lastName
                     covidStatus = profile.covidStatus
                 
             case .failure(_):
-                //show alert
-                break
+                    alertItem = AlertContext.unableToGetProfile
+                    break
             }
         }
         
         }
-}
+    }
+        
+        func updateProfile() {
+            guard isValidProfile() else {
+                alertItem = AlertContext.invalidProfile
+                return
+            }
+            
+            guard let  profileRecord  = existingProfileRecord else {
+                alertItem = AlertContext.unableToGetProfile
+                return
+            }
+        
+            
+            profileRecord[PVProfile.kFirstName]         = firstName
+            profileRecord[PVProfile.kLastName]          =  lastName
+            profileRecord[PVProfile.kCovidStatus]       = covidStatus
+            
+            showLoadingView()
+            CloudKitManager.shared.save(record: profileRecord) { result  in
+                DispatchQueue.main.async { [self] in
+                    hideLoadingView()
+                    switch result {
+                        case .success(_):
+                            alertItem = AlertContext.updateProfileSuccess
+                        
+                        case .failure(_):
+                            alertItem = AlertContext.updateProfileFailure
+                    }
+                }
+            }
+        }
 
-                    
-    private func createProfileRecord() -> CKRecord {
+       private func createProfileRecord() -> CKRecord {
         
         let profileRecord = CKRecord(recordType: RecordType.profile)
         profileRecord[PVProfile.kFirstName]         = firstName
@@ -107,4 +156,8 @@ final class ProfileViewModel: ObservableObject {
         
     }
     
+    private func showLoadingView() { isLoading = true }
+      
+    private func  hideLoadingView() { isLoading = false }
+        
 }
