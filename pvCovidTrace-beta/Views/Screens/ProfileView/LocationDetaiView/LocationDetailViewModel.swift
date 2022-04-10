@@ -13,6 +13,8 @@ import CloudKit
 enum CheckInStatus { case checkedIn, checkedOut }
 
 final class LocationDetailViewModel: ObservableObject {
+    @Published var checkedInProfiles: [PVProfile] = []
+    
     let columns = [GridItem(.flexible()),
                    GridItem(.flexible()),
                    GridItem(.flexible())]
@@ -54,9 +56,16 @@ final class LocationDetailViewModel: ObservableObject {
                 }
                 //save update profile to cloudkit
                 CloudKitManager.shared.save(record: record) { result  in
+                   //   let profile = PVProfile(record: record)
                     switch result {
                         
                     case .success(_):
+//                        switch checkInStatus {
+//                        case .checkedIn:
+//                            checkedInProfiles.append(profile)
+//                        case .checkedOut:
+//                            checkedInProfiles.removeAll(where: {$0.id == profile.id})
+//                        }
                         //update our checkedin profle array
                         print("checked in/out succesfully")
                     case .failure(_):
@@ -68,13 +77,21 @@ final class LocationDetailViewModel: ObservableObject {
             }
         }
         
-
-
-        
-        
-        
-        
     }
-    
+    //Function for checked in profies
+    func getCheckedInProfiles(){
+        CloudKitManager.shared.getCheckedInProfiles(for: location.id) { [self] result in
+            DispatchQueue.main.async {
+                switch result{
+                    
+                case .success(let profiles):
+                    checkedInProfiles = profiles
+                case .failure(_):
+                    print("Error fetching checkedIn profiles")
+                }
+            }
+            
+        }
+    }
     
 }

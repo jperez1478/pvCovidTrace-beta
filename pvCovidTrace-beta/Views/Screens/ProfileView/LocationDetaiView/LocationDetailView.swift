@@ -50,6 +50,7 @@ struct LocationDetailView: View {
                     
                     
                     Button {
+                        viewModel.updateCheckInStatus(to: .checkedIn)
                     } label: {
                         LocationActionButton(color: .brandPrimary, imageName: "person.fill.checkmark")
                     }
@@ -63,15 +64,13 @@ struct LocationDetailView: View {
            ///this allow for scroll view
             ScrollView {
                 LazyVGrid(columns: viewModel.columns, content: {
-                    FirstNameAvatarView(firstName: "sean")
-                    FirstNameAvatarView(firstName: "sean")
-                    FirstNameAvatarView(firstName: "sean")
-                    FirstNameAvatarView(firstName: "sean")
-                    FirstNameAvatarView(firstName: "sean")
+                        FirstNameAvatarView(firstName: "sean")
+                        FirstNameAvatarView(firstName: "sean")
+                        FirstNameAvatarView(firstName: "sean")
+                        FirstNameAvatarView(firstName: "sean")
+                        FirstNameAvatarView(firstName: "sean")
                     
-                    
-                    
-                    
+                  
                 })
             }
             
