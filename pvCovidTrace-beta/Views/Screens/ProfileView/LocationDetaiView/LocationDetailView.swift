@@ -15,7 +15,7 @@ struct LocationDetailView: View {
     var body: some View {
         VStack(spacing: 16) {
             BannerImageView(image: viewModel.location.createBannerImage())
-        
+            
             HStack {
                 AdressView(adressString: viewModel.location.adress)
                 
@@ -37,7 +37,7 @@ struct LocationDetailView: View {
                     Button {
                         viewModel.getDirectionsToLocation()
                     } label: {
-                       
+                        
                         LocationActionButton(color: .brandPrimary, imageName: "location.fill")
                     }
                     Link(destination: URL(string: viewModel.location.websiteURL)!, label:  {
@@ -48,12 +48,13 @@ struct LocationDetailView: View {
                         }
                     })
                     
-                    
-                    Button {
-                        viewModel.updateCheckInStatus(to: .checkedIn)
-                    } label: {
-                        LocationActionButton(color: .brandPrimary, imageName: "person.fill.checkmark")
-                    }
+                        Button {
+                            viewModel.updateCheckInStatus(to: viewModel.isCheckedIn ? .checkedOut: .checkedIn)
+                        } label: {
+                            LocationActionButton(color: viewModel.isCheckedIn ? .red : .brandPrimary, imageName: viewModel.isCheckedIn ? "person.fill.checkmark" : "person.fill.checkmark")
+                        }
+                   
+
                 }
                 
             }
@@ -61,20 +62,31 @@ struct LocationDetailView: View {
             Text("Whos here?")
                 .bold()
                 .font(.title2)
-           ///this allow for scroll view
-            ScrollView {
-                LazyVGrid(columns: viewModel.columns, content: {
-                        FirstNameAvatarView(firstName: "sean")
-                        FirstNameAvatarView(firstName: "sean")
-                        FirstNameAvatarView(firstName: "sean")
-                        FirstNameAvatarView(firstName: "sean")
-                        FirstNameAvatarView(firstName: "sean")
-                    
-                  
-                })
+            ZStack{
+                if viewModel.checkedInProfiles.isEmpty{
+                    Text("Nobody's Here")
+                        .bold()
+                        .font(.title2)
+                        .foregroundColor(.secondary)
+                        .padding(.top, 30)
+                }else {
+                    ///this allow for scroll view
+                    ScrollView {
+                        LazyVGrid(columns: viewModel.columns, content: {
+                            ForEach(viewModel.checkedInProfiles){ profile in
+                            FirstNameAvatarView(profile: profile )
+                            }
+                            
+                        })
+                    }
+                }
+                if viewModel.isLoading{LoadingView()}
             }
-            
-          
+
+                .onAppear(){
+                    viewModel.getCheckedInProfiles()
+                    viewModel.getCheckedInStatus()
+                }
             Spacer()
         }
         .navigationTitle(viewModel.location.name)
@@ -119,12 +131,14 @@ struct LocationActionButton: View {
 
 
 struct FirstNameAvatarView: View {
-    var firstName: String
+    
+    var profile: PVProfile
+    
     var body: some View{
         VStack{
             AvatarView(size: 64)
             
-            Text(firstName)
+            Text(profile.firstName)
                 .bold()
                 .lineLimit(1)
                 .minimumScaleFactor(0.75)

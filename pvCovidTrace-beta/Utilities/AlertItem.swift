@@ -68,5 +68,13 @@ struct AlertContext {
     static let updateProfileFailure  = AlertItem(title:Text("Profile Update failed "),
                                                 message: Text("We are unabl,e to update your profile atr this time \n. Please try again later."),
                                                 dissmissButton:  .default(Text("Ok")))
-
+    static let unableToGetCheckInStatus  = AlertItem(title:Text("Server error"),
+                                                message: Text("Unable to retrieve checked in status of the current user.\nPlease try again."),
+                                                dissmissButton:  .default(Text("Ok")))
+    static let unableToCheckInorOut  = AlertItem(title:Text("Server error"),
+                                                message: Text("We are unable to check in/out at this time. \nPlease try again."),
+                                                dissmissButton:  .default(Text("Ok")))
+    static let unableToGetCheckedInProfiles  = AlertItem(title:Text("Server error"),
+                                                message: Text("We are unable to get users checked into this location at this time. \nPlease try again."),
+                                                dissmissButton:  .default(Text("Ok")))
 }

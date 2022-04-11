@@ -40,7 +40,24 @@ struct ProfileView: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 8){
-                    CharactersRemainingView(currentCount:  viewModel.covidStatus.count)
+                    HStack{
+                        CharactersRemainingView(currentCount:  viewModel.covidStatus.count)
+                        Spacer()
+                        
+                        
+                        Button {
+                            
+                        } label: {
+                            Label("Check Out", systemImage: "mappin.and.ellipse")
+                                .font(.system(size: 12, weight: .semibold))
+                                .foregroundColor(.white)
+                                .padding(10)
+                                .frame(height: 28)
+                                .background(Color.brandPrimary)
+                                .cornerRadius(8)
+                            
+                        }
+                    }
                     TextEditor(text: $viewModel.covidStatus)
                         .frame(width: 100, height: 50)
                         .overlay(RoundedRectangle(cornerRadius: 8)
