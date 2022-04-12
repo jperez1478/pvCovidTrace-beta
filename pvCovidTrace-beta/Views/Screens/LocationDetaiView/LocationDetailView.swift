@@ -10,6 +10,7 @@ import SwiftUI
 struct LocationDetailView: View {
     
     @ObservedObject var viewModel: LocationDetailViewModel
+    @Environment(\.sizeCategory) var sizeCategory
    
     
     var body: some View {
@@ -39,19 +40,23 @@ struct LocationDetailView: View {
                     } label: {
                         
                         LocationActionButton(color: .brandPrimary, imageName: "location.fill")
+                            .accessibilityLabel(Text("Get directions"))
                     }
                     Link(destination: URL(string: viewModel.location.websiteURL)!, label:  {
                         
                         Button {
                         } label: {
                             LocationActionButton(color: .brandPrimary, imageName: "network")
+                                .accessibilityLabel(Text("Go to Website"))
                         }
                     })
                     
                         Button {
                             viewModel.updateCheckInStatus(to: viewModel.isCheckedIn ? .checkedOut: .checkedIn)
+                            playHaptic()
                         } label: {
                             LocationActionButton(color: viewModel.isCheckedIn ? .red : .brandPrimary, imageName: viewModel.isCheckedIn ? "person.fill.checkmark" : "person.fill.checkmark")
+                                .accessibilityLabel(Text(viewModel.isCheckedIn ? "Check out of location" : "Check into location"))
                         }
                    
 
@@ -62,6 +67,9 @@ struct LocationDetailView: View {
             Text("Whos here?")
                 .bold()
                 .font(.title2)
+                .accessibility(addTraits: .isHeader)
+                .accessibilityLabel(Text("Who's Here? \(viewModel.checkedInProfiles.count) checked in"))
+                .accessibilityHint(Text("Bottom section is scrollable"))
             ZStack{
                 if viewModel.checkedInProfiles.isEmpty{
                     Text("Nobody's Here")
@@ -72,9 +80,11 @@ struct LocationDetailView: View {
                 }else {
                     ///this allow for scroll view
                     ScrollView {
-                        LazyVGrid(columns: viewModel.columns, content: {
+                        LazyVGrid(columns: viewModel.determineColumns(for: sizeCategory), content: {
                             ForEach(viewModel.checkedInProfiles){ profile in
-                            FirstNameAvatarView(profile: profile )
+                            FirstNameAvatarView(profile: profile)
+                                    .accessibilityElement(children: .ignore)
+                                    .accessibilityLabel(Text("\(profile.firstName) \(profile.lastName)"))
                             }
                             
                         })
@@ -101,8 +111,7 @@ struct LocationDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
             LocationDetailView(viewModel: LocationDetailViewModel(location: PVLocations(record: MockData.location)))
-        }
-       
+        }       
     }
 }
 
@@ -132,11 +141,12 @@ struct LocationActionButton: View {
 
 struct FirstNameAvatarView: View {
     
+    @Environment(\.sizeCategory) var sizeCategory
     var profile: PVProfile
     
     var body: some View{
         VStack{
-            AvatarView(size: 64)
+            AvatarView(size: sizeCategory >= .accessibilityMedium ? 100 : 64)
             
             Text(profile.firstName)
                 .bold()
@@ -156,6 +166,7 @@ struct BannerImageView: View {
             .resizable()
             .scaledToFill()
             .frame(height: 120)
+            .accessibilityHidden(true)
     }
 }
 
@@ -174,9 +185,8 @@ struct DescriptionView: View {
     
     var body: some View {
         Text(text)
-            .lineLimit(3)
             .minimumScaleFactor(0.75)
-            .frame(height: 70)
+            .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal)
     }
 }

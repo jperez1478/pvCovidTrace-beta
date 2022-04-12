@@ -9,5 +9,6 @@ import MapKit
 import SwiftUI
 
 final class LocationManager: ObservableObject {
-    @Published var locations: [PVLocations] = [] 
+    @Published var locations: [PVLocations] = []
+    var selectedlocation: PVLocations?
 }

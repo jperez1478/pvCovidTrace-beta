@@ -5,59 +5,21 @@
 //  Created by Jessica Perez on 3/30/22.
 //
 
-import Foundation
+import CloudKit
 import MapKit
+import SwiftUI
 
-final class LocationMapViewModel: NSObject, ObservableObject {
+final class LocationMapViewModel: ObservableObject {
     
-    @Published var isShowingOnBoardView = true
+    @Published var checkedInProfiles: [CKRecord.ID: Int] = [:]
+    @Published var isShowingDetailView = false
+    @Published var alertItem: AlertItem?
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 30.09233,
                                                                                 longitude:     -95.99029),
                                                                                  span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
-    @Published var alertItem: AlertItem?
     
-    var deviceLocationManager: CLLocationManager?
-    let kHasSeenOnBoardView = "hasSeenOnBoardView"
     
-    var hasSeenOnBoardView: Bool{
-        return UserDefaults.standard.bool(forKey: kHasSeenOnBoardView)
-    }
-    
-    func runStartUpChecks() {
-        if !hasSeenOnBoardView{
-            isShowingOnBoardView = true
-            UserDefaults.standard.set(true, forKey: kHasSeenOnBoardView)
-        } else{
-            checkIfLocationServicesIsEnabled()
-        }
-    }
-    
-    func checkIfLocationServicesIsEnabled() {
-        if CLLocationManager.locationServicesEnabled() {
-            deviceLocationManager = CLLocationManager()
-            deviceLocationManager!.delegate = self
-        } else {
-            alertItem = AlertContext.locationDisabled
-        }
-    }
-    
-    private func checkLocationAuthorization() {
-        
-        guard let deviceLocationManager = deviceLocationManager else { return }
-        
-        switch deviceLocationManager.authorizationStatus {
-            case .notDetermined:
-                deviceLocationManager.requestWhenInUseAuthorization()
-            case .restricted:
-                alertItem = AlertContext.locationRestricted
-            case .denied:
-                alertItem = AlertContext.locationDenied
-            case .authorizedAlways, .authorizedWhenInUse:
-                break
-            @unknown default:
-                break
-        }
-    }
+
     
     func getLocations(for locationManager: LocationManager) {
         CloudKitManager.shared.getLocations { [self] result in
@@ -71,11 +33,29 @@ final class LocationMapViewModel: NSObject, ObservableObject {
             }
         }
     }
-}
-
-extension LocationMapViewModel: CLLocationManagerDelegate {
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        checkLocationAuthorization()
+    
+    func getCheckedInCounts(){
+        CloudKitManager.shared.getCheckedInProfilesCount{ result in
+            DispatchQueue.main.async {
+                switch result{
+                case .success(let checkedInProfiles):
+                    self.checkedInProfiles = checkedInProfiles
+                case.failure(_):
+                    //Show alert
+                break
+                }
+            }
+            
+        }
+    }
+    
+    @ViewBuilder func createLocationDetailView(for location: PVLocations, in sizeCategory: ContentSizeCategory) -> some View {
+        if sizeCategory >= .accessibilityMedium {
+            LocationDetailView(viewModel: LocationDetailViewModel(location: location)).embedInScrollView()
+        } else {
+            LocationDetailView(viewModel: LocationDetailViewModel(location: location))
+        }
     }
 }
+
 

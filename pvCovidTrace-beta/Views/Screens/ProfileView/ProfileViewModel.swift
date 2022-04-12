@@ -10,13 +10,15 @@ import CloudKit
 enum ProfileContext { case create, update }
 
 final class ProfileViewModel: ObservableObject {
-    @Published var firstName         = ""
-    @Published var lastName           = ""
+    @Published var firstName        = ""
+    @Published var lastName         = ""
     @Published var covidStatus      = ""
-    @Published var avatar              =  PlaceholderImage.avatar
+    @Published var avatar           =  PlaceholderImage.avatar
     @Published var alertItem:       AlertItem?
     
+    
     @Published var isLoading = false
+    @Published var isCheckedIn = false
     
     private var existingProfileRecord: CKRecord? {
         didSet { profileContext = .update }
@@ -32,6 +34,56 @@ final class ProfileViewModel: ObservableObject {
                  covidStatus.count < 20 else { return false }
         
         return true
+    }
+    
+    func getCheckedInStatus(){
+        guard let profileRecordID = CloudKitManager.shared.profileRecordID else {return}
+        
+        CloudKitManager.shared.fetchRecord(with: profileRecordID) {[self] result in
+            DispatchQueue.main.async { [self] in
+                switch result{
+                case .success(let record):
+                    if record[PVProfile.kIsCheckedIn] is CKRecord.Reference{
+                        isCheckedIn = true
+                        
+                    } else{
+                        isCheckedIn = false
+                    }
+                case .failure(_):
+                    break
+                    
+                }
+            }
+            
+        }
+    }
+    func checkOut(){
+        guard let profileID = CloudKitManager.shared.profileRecordID else{
+            alertItem = AlertContext.unableToGetProfile
+            return
+        }
+        CloudKitManager.shared.fetchRecord(with: profileID){ result in
+            switch result {
+            case .success(let record):
+                record[PVProfile.kIsCheckedIn] = nil
+                record[PVProfile.kIsCheckedInNilCheck] = nil
+                
+                CloudKitManager.shared.save(record: record) { [self] result in
+                    DispatchQueue.main.async { [self] in
+                        switch result{
+                        case .success(_):
+                            isCheckedIn = false
+                        case .failure(_):
+                            alertItem = AlertContext.unableToCheckInorOut
+                        }
+                    }
+                    
+                }
+            case .failure(_):
+                DispatchQueue.main.async {self.alertItem = AlertContext.unableToCheckInorOut}
+                
+            }
+        }
     }
     
     func createProfile() {

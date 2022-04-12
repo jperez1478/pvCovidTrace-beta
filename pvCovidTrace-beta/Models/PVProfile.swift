@@ -9,18 +9,19 @@ import Foundation
 import CloudKit
 
 struct PVProfile: Identifiable {
-    static  let kFirstName   = "firstName"
+    static let kFirstName    = "firstName"
     static let kLastName     = "lastName"
     static let kAvatar       = "avatar"
     static let kCovidStatus  = "covidStatus"
-    static let kIsCheckedIn   = " isCheckedIn"
+    static let kIsCheckedIn  = " isCheckedIn"
+    static let kIsCheckedInNilCheck = "isCheckedInNilCheck"
     
     let id: CKRecord.ID
     let firstName: String
     let lastName: String
     let avatar: CKAsset!
     let covidStatus: String
-    let isCheckedIn: CKRecord.Reference? =  nil
+    let isCheckedIn: CKRecord.Reference?
 
     
     ///Member wise initiliazier
@@ -31,6 +32,7 @@ struct PVProfile: Identifiable {
         lastName = record[PVProfile.kLastName] as? String ?? "N/A"
         avatar = record[PVProfile.kAvatar] as? CKAsset
         covidStatus = record[PVProfile.kCovidStatus] as? String ?? "N/A"
+        isCheckedIn = record[PVProfile.kIsCheckedIn] as? CKRecord.Reference
         
     }
     

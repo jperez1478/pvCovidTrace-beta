@@ -18,14 +18,14 @@ final class LocationDetailViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var alertItem: AlertItem?
     
-    let columns = [GridItem(.flexible()),
-                   GridItem(.flexible()),
-                   GridItem(.flexible())]
     
     var location: PVLocations
     
-    init(location: PVLocations) {
-        self.location = location
+    init(location: PVLocations) {self.location = location}
+    
+    func determineColumns(for sizeCategory: ContentSizeCategory) -> [GridItem] {
+        let numberOfColumns = sizeCategory >= .accessibilityMedium ? 1 : 3
+        return Array(repeating: GridItem(.flexible()), count: numberOfColumns)
     }
     
     func getDirectionsToLocation() {
@@ -42,7 +42,7 @@ final class LocationDetailViewModel: ObservableObject {
         guard let profileRecordID = CloudKitManager.shared.profileRecordID else {return}
         
         CloudKitManager.shared.fetchRecord(with: profileRecordID) {[self] result in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [self] in
                 switch result{
                 case .success(let record):
                     if let reference = record[PVProfile.kIsCheckedIn] as? CKRecord.Reference{
@@ -76,11 +76,13 @@ final class LocationDetailViewModel: ObservableObject {
                 switch checkInStatus {
                 case .checkedIn:
                     record[PVProfile.kIsCheckedIn] = CKRecord.Reference(recordID: location.id, action: .none)
+                    record[PVProfile.kIsCheckedInNilCheck] = 1
                 case .checkedOut:
                     record[PVProfile.kIsCheckedIn]  = nil
+                    record[PVProfile.kIsCheckedInNilCheck] = nil
                 }
                 //save update profile to cloudkit
-                CloudKitManager.shared.save(record: record) { result  in
+                CloudKitManager.shared.save(record: record) { [self] result  in
                     DispatchQueue.main.sync {
                         switch result {
                             // Upon sucess of able to check into a location
@@ -111,7 +113,7 @@ final class LocationDetailViewModel: ObservableObject {
     func getCheckedInProfiles(){
         showLoadingView()
         CloudKitManager.shared.getCheckedInProfiles(for: location.id) { [self] result in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [self] in
                 switch result{
                     
                 case .success(let profiles):

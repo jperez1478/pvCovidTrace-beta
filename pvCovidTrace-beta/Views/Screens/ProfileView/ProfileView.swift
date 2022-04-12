@@ -23,6 +23,7 @@ struct ProfileView: View {
                             AvatarView(size: 84)
                             EditImage()
                         }
+                        .accessibilityElement(children: .ignore)
                         .padding(.leading, 12)
                         
                         VStack(spacing: 1) {
@@ -42,26 +43,35 @@ struct ProfileView: View {
                 VStack(alignment: .leading, spacing: 8){
                     HStack{
                         CharactersRemainingView(currentCount:  viewModel.covidStatus.count)
+                            .accessibilityAddTraits(.isHeader)
                         Spacer()
                         
-                        
-                        Button {
-                            
-                        } label: {
-                            Label("Check Out", systemImage: "mappin.and.ellipse")
-                                .font(.system(size: 12, weight: .semibold))
-                                .foregroundColor(.white)
-                                .padding(10)
-                                .frame(height: 28)
-                                .background(Color.brandPrimary)
-                                .cornerRadius(8)
-                            
+                        //Only show the check out button if the user is checkin somewhere
+                        if viewModel.isCheckedIn{
+                            Button {
+                                viewModel.checkOut()
+                                playHaptic()
+                            } label: {
+                                Label("Check Out", systemImage: "mappin.and.ellipse")
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .padding(10)
+                                    .frame(height: 28)
+                                    .background(Color.brandPrimary)
+                                    .cornerRadius(8)
+                                
+                            }
+                            .accessibilityLabel(Text("Check out of current location"))
                         }
+                       
+                     
                     }
                     TextEditor(text: $viewModel.covidStatus)
                         .frame(width: 100, height: 50)
                         .overlay(RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.secondary,  lineWidth: 1))
+                        .accessibilityLabel(Text("Covid Status, \(viewModel.covidStatus)"))
+                        .accessibilityHint(Text("This TextField has a 20 charcter maximum."))
                         
             }
             
@@ -85,6 +95,7 @@ struct ProfileView: View {
         }
      
         .navigationTitle("Profile")
+        .navigationBarTitleDisplayMode(DeviceTypes.isiPhone8Standard ? .inline : .automatic)
         .toolbar {
             Button {
                 dismissKeyboard()
@@ -92,7 +103,10 @@ struct ProfileView: View {
                 Image(systemName: "keyboard.chevron.compact.down")
             }
         }
-        .onAppear { viewModel.getProfile() }
+        .onAppear {
+            viewModel.getProfile()
+            viewModel.getCheckedInStatus()
+        }
         .alert(item: $viewModel.alertItem, content: { alertItem in
             Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dissmissButton)
             

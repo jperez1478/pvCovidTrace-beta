@@ -11,7 +11,7 @@ import UIKit
 
 struct PVLocations: Identifiable {
     
-    static  let kName = "name"
+    static let kName = "name"
     static let kDescription = "description"
     static let kSquareAsset = "squareAsset"
     static let  kBannerAsset = "bannerAsset"

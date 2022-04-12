@@ -12,8 +12,9 @@ import CloudKit
 struct LocationMapView: View {
     
  
-@EnvironmentObject private var locationManager: LocationManager
-@StateObject private var viewModel = LocationMapViewModel()
+    @EnvironmentObject  private var locationManager: LocationManager
+    @StateObject        private var viewModel = LocationMapViewModel()
+    @Environment(\.sizeCategory) var sizeCategory
   
  
     var body: some View {
@@ -23,7 +24,15 @@ struct LocationMapView: View {
             
             Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: locationManager.locations) { location in
                 
-                MapMarker(coordinate: location.location.coordinate, tint: .brandPrimary)
+                MapAnnotation(coordinate: location.location.coordinate, anchorPoint:CGPoint(x: 0.5, y: 0.5)){
+                    PVAnnotation(location: location,
+                                 number: viewModel.checkedInProfiles[location.id, default: 0])
+                        .accessibilityLabel(Text("Map Pin \(location.name) \(viewModel.checkedInProfiles[location.id, default: 0]) people checked in."))
+                        .onTapGesture {
+                            locationManager.selectedlocation = location
+                            viewModel.isShowingDetailView = true
+                        }
+                }
                 
                 
             }
@@ -33,13 +42,21 @@ struct LocationMapView: View {
             VStack {
                LogoView(frameWidth: 125)
                     .shadow(radius: 10)
+//                    .accessibilityHidden(true)
             
                 Spacer()
             }
         }
         
-        .sheet(isPresented: $viewModel.isShowingOnBoardView, onDismiss: viewModel.checkIfLocationServicesIsEnabled){
-            OnboardingView(isShowingOnBoardView: $viewModel.isShowingOnBoardView)
+        .sheet(isPresented: $viewModel.isShowingDetailView){
+            NavigationView{
+                viewModel.createLocationDetailView(for: locationManager.selectedlocation!, in: sizeCategory)
+                    .toolbar{
+                        Button("Dismiss", action: {viewModel.isShowingDetailView = false})
+                    }
+            }
+            .accentColor(.brandPrimary)
+
         }
          
         .alert(item: $viewModel.alertItem, content: { alertItem in
@@ -48,12 +65,10 @@ struct LocationMapView: View {
         })
         
         .onAppear {
-            viewModel.runStartUpChecks()
-            
             if locationManager.locations.isEmpty {
                 viewModel.getLocations(for: locationManager)
-                    
             }
+            viewModel.getCheckedInCounts()
             
             }
         }

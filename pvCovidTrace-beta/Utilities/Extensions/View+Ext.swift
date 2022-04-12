@@ -12,6 +12,19 @@ extension View {
         self.modifier(ProfileNameText())
     }
 
+    func playHaptic(){
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
+    
+    func embedInScrollView() -> some View{
+        GeometryReader{ geometry in
+            ScrollView{
+                self.frame(minWidth: geometry.size.height, maxHeight: .infinity)
+            }
+            
+        }
+    }
 
 //this help dismiss the keybaord
     func dismissKeyboard() {
