@@ -40,7 +40,7 @@
 		F155D29528047F0D0088C00E /* LocationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F155D29428047F0D0088C00E /* LocationListViewModel.swift */; };
 		F155D298280485800088C00E /* Mapballon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F155D297280485800088C00E /* Mapballon.swift */; };
 		F155D29A280487B00088C00E /* PVAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F155D299280487B00088C00E /* PVAnnotation.swift */; };
-		F155D29D28048F360088C00E /* AppTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F155D29C28048F360088C00E /* AppTabViewModel.swift */; };
+		F155D2A02805D4FD0088C00E /* AppTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F155D29F2805D4FD0088C00E /* AppTabViewModel.swift */; };
 		F164007A2800F96D000193D6 /* PVNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16400792800F96D000193D6 /* PVNewsView.swift */; };
 		F164007C2800F980000193D6 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164007B2800F980000193D6 /* News.swift */; };
 		F164007F2800F9B2000193D6 /* NewsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164007E2800F9B2000193D6 /* NewsDetailView.swift */; };
@@ -83,8 +83,8 @@
 		F155D29428047F0D0088C00E /* LocationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewModel.swift; sourceTree = "<group>"; };
 		F155D297280485800088C00E /* Mapballon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapballon.swift; sourceTree = "<group>"; };
 		F155D299280487B00088C00E /* PVAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVAnnotation.swift; sourceTree = "<group>"; };
-		F155D29C28048F360088C00E /* AppTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabViewModel.swift; sourceTree = "<group>"; };
 		F155D29E2804D0380088C00E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F155D29F2805D4FD0088C00E /* AppTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabViewModel.swift; sourceTree = "<group>"; };
 		F16400792800F96D000193D6 /* PVNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVNewsView.swift; sourceTree = "<group>"; };
 		F164007B2800F980000193D6 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		F164007E2800F9B2000193D6 /* NewsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailView.swift; sourceTree = "<group>"; };
@@ -286,7 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				8EBF469327F2DD4F0077150D /* AppTabView.swift */,
-				F155D29C28048F360088C00E /* AppTabViewModel.swift */,
+				F155D29F2805D4FD0088C00E /* AppTabViewModel.swift */,
 			);
 			path = AppTabView;
 			sourceTree = "<group>";
@@ -391,7 +391,7 @@
 				8E14E58C27F3A00B00774ABE /* AvatarView.swift in Sources */,
 				8EBF469627F2DD8D0077150D /* LocationMapView.swift in Sources */,
 				F164007C2800F980000193D6 /* News.swift in Sources */,
-				F155D29D28048F360088C00E /* AppTabViewModel.swift in Sources */,
+				F155D2A02805D4FD0088C00E /* AppTabViewModel.swift in Sources */,
 				8EBF48A327F464BB003443BC /* LocationMapViewModel.swift in Sources */,
 				F164007A2800F96D000193D6 /* PVNewsView.swift in Sources */,
 				8E14E59027F3A0A000774ABE /* Custommodifiers.swift in Sources */,
