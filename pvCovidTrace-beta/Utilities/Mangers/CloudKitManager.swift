@@ -31,10 +31,11 @@ final class CloudKitManager {
                 }
                 
                 self.userRecord = userRecord
+                self.profileRecordID = userRecord.creatorUserRecordID
                 
-                if let profileRefrence = userRecord["userProfile"] as? CKRecord.Reference {
-                    self.profileRecordID = profileRefrence.recordID
-                }
+//                if let profileRefrence = userRecord["userProfile"] as? CKRecord.Reference {
+//                    self.profileRecordID = profileRefrence.recordID
+//                }
              
             
             }

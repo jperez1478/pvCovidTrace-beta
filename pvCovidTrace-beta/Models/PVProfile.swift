@@ -13,7 +13,7 @@ struct PVProfile: Identifiable {
     static let kLastName     = "lastName"
     static let kAvatar       = "avatar"
     static let kCovidStatus  = "covidStatus"
-    static let kIsCheckedIn  = " isCheckedIn"
+    static let kIsCheckedIn  = "isCheckedIn"
     static let kIsCheckedInNilCheck = "isCheckedInNilCheck"
     
     let id: CKRecord.ID
