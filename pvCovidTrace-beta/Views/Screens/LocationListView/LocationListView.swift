@@ -11,13 +11,13 @@ import CloudKit
 struct LocationListView: View {
     @EnvironmentObject private var locationManager: LocationManager
     @State private var viewModel = LocationListViewModel()
-    @Environment(\.sizeCategory) var sizeCategory
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
     
     var body: some View {
         NavigationView{
             List {
                 ForEach(locationManager.locations) {  location   in
-                    NavigationLink(destination: viewModel.createLocationDetailView(for: location, in: sizeCategory)) {
+                    NavigationLink(destination: viewModel.createLocationDetailView(for: location, in: dynamicTypeSize)) {
                         LocationCell(location: location,
                                      profiles: viewModel.checkedInProfiles[location.id, default: []])
                         .accessibilityElement(children: .ignore)
@@ -25,10 +25,11 @@ struct LocationListView: View {
                     }
                         
                     }
-                .onAppear{viewModel.getCheckedInProfileDictionary()}
                 
             }
                 .navigationTitle("PV Locations")
+                .onAppear{viewModel.getCheckedInProfileDictionary()}
+                .alert(item: $viewModel.alertItem, content: { $0.alert })
         }
     }
 }

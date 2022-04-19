@@ -50,7 +50,6 @@ struct ProfileView: View {
                         if viewModel.isCheckedIn{
                             Button {
                                 viewModel.checkOut()
-                                playHaptic()
                             } label: {
                                 Label("Check Out", systemImage: "mappin.and.ellipse")
                                     .font(.system(size: 12, weight: .semibold))
@@ -107,10 +106,7 @@ struct ProfileView: View {
             viewModel.getProfile()
             viewModel.getCheckedInStatus()
         }
-        .alert(item: $viewModel.alertItem, content: { alertItem in
-            Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dissmissButton)
-            
-        })
+        .alert(item: $viewModel.alertItem, content: { $0.alert})
     }
 
 
@@ -125,7 +121,7 @@ struct ProfileView_Previews: PreviewProvider {
 
 
 
-struct NameBackgroundView: View {
+fileprivate struct NameBackgroundView: View {
     var body: some View {
         Color(.secondarySystemBackground)
             .frame(height: 130)
@@ -134,7 +130,7 @@ struct NameBackgroundView: View {
     }
 }
 
-struct EditImage:View {
+fileprivate struct EditImage: View {
     var body: some View {
         Image(systemName: "square.and.pencil")
             .resizable()
@@ -145,7 +141,7 @@ struct EditImage:View {
     }
 }
 
-struct CharactersRemainingView: View {
+fileprivate struct CharactersRemainingView: View {
     var currentCount: Int
     var body: some View{
         Text("\(20  -  currentCount)")

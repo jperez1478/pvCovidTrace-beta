@@ -13,6 +13,9 @@ struct AlertItem: Identifiable {
     let message: Text
     let dissmissButton: Alert.Button
     
+    var alert: Alert {
+        Alert(title: title, message: message, dismissButton: dissmissButton)
+    }
 }
 
 
@@ -34,6 +37,10 @@ struct AlertContext {
     
     static let locationDisabled = AlertItem(title:Text(" Location Disabled"),
                                                 message: Text("Your phone's location services are disabled. To change that go to your phone's settins > Privacy > Location Services"),
+                                                dissmissButton:  .default(Text("Ok")))
+    
+    static let checkedInCount = AlertItem(title:Text("Sever Error"),
+                                                message: Text("Unable to get the number of people checked into each location. Please check your internet connection and try again."),
                                                 dissmissButton:  .default(Text("Ok")))
  
     //MARK: - ProfileViewErrors
@@ -76,5 +83,10 @@ struct AlertContext {
                                                 dissmissButton:  .default(Text("Ok")))
     static let unableToGetCheckedInProfiles  = AlertItem(title:Text("Server error"),
                                                 message: Text("We are unable to get users checked into this location at this time. \nPlease try again."),
+                                                dissmissButton:  .default(Text("Ok")))
+    
+    //MARK: - Location List View
+    static let unableToGetAllCheckedInProfiles = AlertItem(title:Text("Server error"),
+                                                message: Text("We are unable to retrieve the location profiles at this time. \nPlease try again"),
                                                 dissmissButton:  .default(Text("Ok")))
 }

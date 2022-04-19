@@ -39,9 +39,8 @@ struct AppTabView: View {
             CloudKitManager.shared.getUserRecord()
             viewModel.runStartUpChecks()
         }
-        .accentColor(.brandPrimary)
         .sheet(isPresented: $viewModel.isShowingOnBoardView, onDismiss: viewModel.checkIfLocationServicesIsEnabled){
-            OnboardingView(isShowingOnBoardView: $viewModel.isShowingOnBoardView)
+            OnboardingView()
         }
     }
 }
