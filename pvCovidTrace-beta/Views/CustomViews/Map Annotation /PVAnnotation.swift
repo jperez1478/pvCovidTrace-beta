@@ -24,6 +24,7 @@ struct PVAnnotation: View {
                     .clipShape(Circle())
                     .offset(y: -11)
                 
+                
                 if number > 0 {
                     Text("\(min(number, 99))")
                         .font(.system(size: 11, weight: .bold))
@@ -39,8 +40,15 @@ struct PVAnnotation: View {
             Text(location.name)
                 .font(.caption)
                 .fontWeight(.semibold)
+            
+            Text(location.positiveCases)
+                .font(.subheadline)
+                .fontWeight(.semibold)
+
         }
         .accessibilityLabel(Text("Map Pin \(location.name) \(number) checked in."))
+        
+        .accessibilityLabel(Text("Positive \(location.positiveCases)\(number) positive case"))
     }
 }
 

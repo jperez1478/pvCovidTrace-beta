@@ -62,6 +62,26 @@ final class CloudKitManager {
         }
     }
     
+    //func to fetch input manu covid cases 
+    func getCases(completed: @escaping(Result<[PVLocations], Error>)-> Void) {
+        let SortDescriptor = NSSortDescriptor(key: PVLocations.kPostiveCases, ascending: true)
+        let query = CKQuery(recordType: RecordType.location, predicate: NSPredicate(value: true))
+        
+        CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { records, error in
+            guard error == nil else {
+                completed(.failure(error!))
+                return
+            }
+            
+            guard let records = records else { return }
+            
+            let locations = records.map { $0.convertToPVLocations()}
+            
+            completed(.success(locations))
+            
+        }
+    }
+    
     //Get the checked in profiles from the database
     func getCheckedInProfiles(for locationID: CKRecord.ID, completed: @escaping (Result<[PVProfile], Error>) -> Void){
         let reference = CKRecord.Reference(recordID: locationID, action: .none)

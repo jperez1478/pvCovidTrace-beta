@@ -57,7 +57,10 @@ struct LocationMapView: View {
         .onAppear {
             if locationManager.locations.isEmpty {
                 viewModel.getLocations(for: locationManager)
+                viewModel.getCases(for: locationManager)
             }
+            
+            
             viewModel.getCheckedInCounts()
             
             }

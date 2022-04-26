@@ -27,6 +27,10 @@ struct AlertContext {
                                                 message: Text("Unable to retrive locations at this time.\nPlease try again"),
                                                 dissmissButton:  .default(Text("Ok")))
     
+    static let unableToGetCases = AlertItem(title:Text("Cases Error"),
+                                                message: Text("Unable to retrive cases at this time.\nPlease try again"),
+                                                dissmissButton:  .default(Text("Ok")))
+    
     static let locationRestricted = AlertItem(title:Text("Locations Restricted"),
                                                 message: Text("Your location is restricted. This may be due to parental controls"),
                                                 dissmissButton:  .default(Text("Ok")))

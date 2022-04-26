@@ -18,6 +18,7 @@ struct PVLocations: Identifiable {
     static let kAdress = "adress"
     static let kLocaton = "location"
     static let kWebsiteURL = "websiteURL"
+    static let kPostiveCases = "positiveCases"
     
     let id: CKRecord.ID
     let name: String
@@ -27,6 +28,7 @@ struct PVLocations: Identifiable {
     let adress: String
     let location: CLLocation
     let websiteURL: String
+    let positiveCases: String!
 
     
     ///Member wise initiliazier
@@ -40,6 +42,7 @@ struct PVLocations: Identifiable {
         adress = record[PVLocations.kAdress] as? String ?? "N/A"
         location = record[PVLocations.kLocaton] as? CLLocation ?? CLLocation(latitude: 0, longitude: 0)
         websiteURL = record[PVLocations.kWebsiteURL] as? String ?? "N/A"
+        positiveCases = record[PVLocations.kPostiveCases] as? String ?? "N/A"
     }
     
     var squareImage: UIImage {

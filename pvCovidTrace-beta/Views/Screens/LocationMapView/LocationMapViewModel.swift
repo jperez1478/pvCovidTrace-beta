@@ -36,6 +36,21 @@ extension LocationMapView{
             }
         }
         
+        
+        
+        func getCases(for locationManager: LocationManager) {
+            CloudKitManager.shared.getCases { [self] result in
+                DispatchQueue.main.async {
+                    switch result {
+                        case .success(let locations):
+                            locationManager.locations = locations
+                        case .failure(_):
+                            alertItem = AlertContext.unableToGetCases
+                    }
+                }
+            }
+        }
+        
         func getCheckedInCounts(){
             CloudKitManager.shared.getCheckedInProfilesCount{ result in
                 DispatchQueue.main.async { [self] in
