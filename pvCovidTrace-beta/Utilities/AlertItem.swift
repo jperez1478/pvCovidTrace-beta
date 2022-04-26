@@ -53,7 +53,7 @@ struct AlertContext {
                                                 dissmissButton:  .default(Text("Ok")))
 
     static let noUserRecord   = AlertItem(title:Text(" No User Record "),
-                                                message: Text("You musty log to iCloud on your phone in order to utilize PVCovidTrace Profile. Please  log in on  your phone's settings  screen."),
+                                                message: Text("You must log to iCloud on your phone in order to utilize PVCovidTrace Profile. Please  log in on  your phone's settings  screen."),
                                                 dissmissButton:  .default(Text("Ok")))
 
     

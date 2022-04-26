@@ -9,8 +9,11 @@
 import SwiftUI
 import CloudKit
 
+
 struct ProfileView: View {
+    
     @StateObject private var viewModel =  ProfileViewModel()
+    var placeholder = "Select Status"
     
     var body: some View {
         ZStack {
@@ -64,14 +67,37 @@ struct ProfileView: View {
                         }
                        
                      
-                    }
+                    }/*
                     TextEditor(text: $viewModel.covidStatus)
                         .frame(width: 100, height: 50)
                         .overlay(RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.secondary,  lineWidth: 1))
                         .accessibilityLabel(Text("Covid Status, \(viewModel.covidStatus)"))
                         .accessibilityHint(Text("This TextField has a 20 charcter maximum."))
-                        
+                      */
+                    //Dropdown()
+                    Menu {
+                        ForEach(viewModel.dropDownList, id: \.self){ status in
+                            Button(status){
+                                viewModel.covidStatus = status
+                            }
+                        }
+                    } label: {
+                        VStack(spacing: 5){
+                            HStack{
+                                Text(viewModel.covidStatus.isEmpty ? placeholder : viewModel.covidStatus)
+                                    .foregroundColor(viewModel.covidStatus.isEmpty ? .gray : .black)
+                                Spacer()
+                                Image(systemName: "chevron.down")
+                                    .foregroundColor(Color.brandPrimary)
+                                    .font(Font.system(size: 20, weight: .bold))
+                            }
+                            .padding(.horizontal)
+                            Rectangle()
+                                .fill(Color.brandPrimary)
+                                .frame(height: 2)
+                        }
+                    }
             }
             
             .padding(.horizontal, 20)
@@ -156,4 +182,40 @@ fileprivate struct CharactersRemainingView: View {
             .foregroundColor(.secondary)
 
     }
+    
 }
+
+/*
+struct Dropdown: View {
+    @State var value = ""
+    var placeholder = "Select Status"
+    var dropDownList = ["Positive", "Negative"]
+    var body: some View{
+        Menu {
+            ForEach(dropDownList, id: \.self){ client in
+                Button(client){
+                    self.value = client
+                }
+            }
+        } label: {
+            VStack(spacing: 5){
+                HStack{
+                    Text(value.isEmpty ? placeholder : value)
+                        .foregroundColor(value.isEmpty ? .gray : .black)
+                    Spacer()
+                    Image(systemName: "chevron.down")
+                        .foregroundColor(Color.brandPrimary)
+                        .font(Font.system(size: 20, weight: .bold))
+                }
+                .padding(.horizontal)
+                Rectangle()
+                    .fill(Color.brandPrimary)
+                    .frame(height: 2)
+            }
+        }
+        
+    }
+    
+    
+}
+ */
