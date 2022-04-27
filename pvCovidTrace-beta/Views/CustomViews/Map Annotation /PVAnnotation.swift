@@ -41,7 +41,7 @@ struct PVAnnotation: View {
                 .font(.caption)
                 .fontWeight(.semibold)
             
-            Text(location.positiveCases)
+            Text(location.positive)
                 .font(.subheadline)
                 .fontWeight(.heavy)
                 .foregroundColor(.red)
@@ -49,7 +49,7 @@ struct PVAnnotation: View {
         }
         .accessibilityLabel(Text("Map Pin \(location.name) \(number) checked in."))
         
-        .accessibilityLabel(Text("Positive \(location.positiveCases)\(number) positive case"))
+        .accessibilityLabel(Text("Positive \(location.positive)\(number) positive case"))
     }
 }
 

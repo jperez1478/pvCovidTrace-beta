@@ -64,7 +64,7 @@ final class CloudKitManager {
     
     //func to fetch input manu covid cases 
     func getCases(completed: @escaping(Result<[PVLocations], Error>)-> Void) {
-        let SortDescriptor = NSSortDescriptor(key: PVLocations.kPostiveCases, ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: PVLocations.kPostiveCases, ascending: true)
         let query = CKQuery(recordType: RecordType.location, predicate: NSPredicate(value: true))
         
         CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { records, error in
