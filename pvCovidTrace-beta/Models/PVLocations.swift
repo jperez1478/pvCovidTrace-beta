@@ -42,7 +42,7 @@ struct PVLocations: Identifiable {
         adress = record[PVLocations.kAdress] as? String ?? "N/A"
         location = record[PVLocations.kLocaton] as? CLLocation ?? CLLocation(latitude: 0, longitude: 0)
         websiteURL = record[PVLocations.kWebsiteURL] as? String ?? "N/A"
-        positive = record[PVLocations.kPostiveCases] as? String ?? "N/A"
+        positive = record[PVLocations.kPostiveCases] as? String ?? "0"
     }
     
     var squareImage: UIImage {
