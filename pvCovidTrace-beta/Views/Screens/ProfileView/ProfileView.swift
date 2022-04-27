@@ -45,8 +45,11 @@ struct ProfileView: View {
                 
                 VStack(alignment: .leading, spacing: 8){
                     HStack{
-                        CharactersRemainingView(currentCount:  viewModel.covidStatus.count)
+                        /*CharactersRemainingView(currentCount:  viewModel.covidStatus.count)
                             .accessibilityAddTraits(.isHeader)
+                         */
+                        Text("Select Covid Status to Submit")
+                            .bold()
                         Spacer()
                         
                         //Only show the check out button if the user is checkin somewhere
