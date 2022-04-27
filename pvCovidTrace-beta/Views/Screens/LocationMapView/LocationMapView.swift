@@ -38,7 +38,8 @@ struct LocationMapView: View {
             .accentColor(.red)
             .ignoresSafeArea()
             
-               LogoView(frameWidth: 125).shadow(radius: 10)
+            LogoView(frameWidth: 100)
+
         }
         
         .sheet(isPresented: $viewModel.isShowingDetailView){

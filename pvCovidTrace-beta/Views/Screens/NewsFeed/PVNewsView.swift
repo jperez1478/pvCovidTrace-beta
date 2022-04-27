@@ -23,7 +23,7 @@ struct PVNewsView: View {
                 .toolbar {
                     ToolbarItem(placement: .principal){
                         HStack{
-                            Image("pvmap")
+                            Image("Covid_logo1")
                                 .resizable()
                                 .scaledToFit()
                             Text("News")

@@ -45,6 +45,8 @@
 		F164007A2800F96D000193D6 /* PVNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16400792800F96D000193D6 /* PVNewsView.swift */; };
 		F164007C2800F980000193D6 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164007B2800F980000193D6 /* News.swift */; };
 		F164007F2800F9B2000193D6 /* NewsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164007E2800F9B2000193D6 /* NewsDetailView.swift */; };
+		F181FFF82819B15500DCF041 /* covidAppLogo120.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F181FFF72819B15500DCF041 /* covidAppLogo120.jpg */; };
+		F181FFFA2819B15E00DCF041 /* covidAppLogo180.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F181FFF92819B15D00DCF041 /* covidAppLogo180.jpg */; };
 		F1BB637D27F7E23C00EC7253 /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BB637C27F7E23C00EC7253 /* XDismissButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,8 @@
 		F16400792800F96D000193D6 /* PVNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVNewsView.swift; sourceTree = "<group>"; };
 		F164007B2800F980000193D6 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		F164007E2800F9B2000193D6 /* NewsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailView.swift; sourceTree = "<group>"; };
+		F181FFF72819B15500DCF041 /* covidAppLogo120.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = covidAppLogo120.jpg; sourceTree = "<group>"; };
+		F181FFF92819B15D00DCF041 /* covidAppLogo180.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = covidAppLogo180.jpg; sourceTree = "<group>"; };
 		F1BB637C27F7E23C00EC7253 /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -237,6 +241,8 @@
 				8EBF468D27F175370077150D /* pvCovidTrace-beta.entitlements */,
 				8EBF467F27F175170077150D /* pvCovidTrace_betaApp.swift */,
 				8EBF468327F175180077150D /* Assets.xcassets */,
+				F181FFF72819B15500DCF041 /* covidAppLogo120.jpg */,
+				F181FFF92819B15D00DCF041 /* covidAppLogo180.jpg */,
 				8EBF468527F175180077150D /* Preview Content */,
 			);
 			path = "pvCovidTrace-beta";
@@ -372,6 +378,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EBF468727F175180077150D /* Preview Assets.xcassets in Resources */,
+				F181FFF82819B15500DCF041 /* covidAppLogo120.jpg in Resources */,
+				F181FFFA2819B15E00DCF041 /* covidAppLogo180.jpg in Resources */,
 				8EBF468427F175180077150D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
