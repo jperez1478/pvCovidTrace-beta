@@ -16,6 +16,7 @@ extension ProfileView {
         @Published var covidStatus      = ""
         @Published var avatar           =  PlaceholderImage.avatar
         @Published var alertItem:       AlertItem?
+        @Published var dropDownList = ["Positive", "Negative"]
         
         
         @Published var isLoading = false
