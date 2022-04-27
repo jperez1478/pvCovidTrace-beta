@@ -62,6 +62,7 @@ struct LocationMapView: View {
             
             
             viewModel.getCheckedInCounts()
+        
             
             }
         }
