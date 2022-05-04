@@ -73,7 +73,7 @@ fileprivate struct FirstNameAvatarView: View {
         VStack{
             AvatarView(size: dynamicTypeSize >= .accessibility3 ? 100 : 64)
             
-            Text(profile.firstName)
+            Text("user")  //user name 
                 .bold()
                 .lineLimit(1)
                 .minimumScaleFactor(0.75)
